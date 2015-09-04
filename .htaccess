@@ -1,0 +1,20 @@
+Options FollowSymLinks
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !^public
+RewriteCond %{REQUEST_URI} !^/frontend/web/
+#RewriteRule ^(.*)$ frontend/web/Condiciones-generales-de-la-contratación [L] 
+RewriteRule ^(.*)$ frontend/web/Condiciones-generales-de-la-contratación
+
+#RewriteCond %{REQUEST_URI} !^/usersbackend/web/
+#RewriteCond %{REQUEST_URI} ^/usersbackend
+#RewriteRule ^.*$ usersbackend/web [LP]
+
+#RewriteCond %{HTTP_HOST} ^(www.)?myprojectt\.com$ 
+#RewriteRule ^(/)?$ frontend/web/$1 [P]
+
+#RewriteRule ^www\.myprojectt\.com$ /frontend/web/ [P]
+#RewriteRule ^(.*)$ /frontend/web/$1 [L]
+
+#RewriteCond %{REQUEST_URI} !^/frontend/web/
+#RewriteRule ^.*$ /frontend/web/$1 [P]

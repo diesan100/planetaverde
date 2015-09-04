@@ -1,0 +1,14 @@
+h4.panel-title {
+    float: left;
+}
+
+.panel-heading button[type="submit"] {
+    float: right;
+    margin-top: -7px;
+}
+
+.panel.panel-white h4 {
+    color: #EC874B;
+    font-size: 20px;
+}
+

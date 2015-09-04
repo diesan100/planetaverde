@@ -1,0 +1,58 @@
+.navbar-brand > img {
+   height: 25px;
+   width: auto;
+   margin-top: 4px;
+}
+
+/*.top-bar {
+	background-image: url('http://www.raktamachat.org/wordpress/wp-content/themes/Divi/images/adobe-header.png') !important;
+	background-size: auto 100% !important;
+}*/
+
+.redactor-editor {
+    height: 300px;
+}
+
+.redactor-toolbar {
+    border: 1px solid #eee !important;
+}
+
+.redactor-toolbar, .redactor-dropdown {
+    z-index: 100 !important;
+}
+
+#profile-img-dropdown {
+    height: 30px;
+    width: 30px;
+}
+
+#profile-img-sidebar {
+    height: 50px;
+    width: 50px;
+}
+
+
+.form-group.required label:after {
+    content: " *";
+}
+
+/*
+ul.main-navigation-menu > li.active > a {
+  color: #7f7e3d !important;
+}
+
+ul.main-navigation-menu > li a:hover, ul.main-navigation-menu > li a:hover i.fa {
+  color: #EC874B !important;
+}
+
+#horizontal-menu .navbar-collapse .navbar-nav > li.active > a {
+  background: #7f7e3d !important;
+}
+
+#horizontal-menu .navbar-collapse .navbar-nav > li.active > a:after {
+  border-top-color: #7f7e3d !important;
+}
+
+ul.main-navigation-menu > li.active > a i.fa {
+  color: #7f7e3d !important;
+}*/

@@ -1,0 +1,241 @@
+/*-------------------------------------------
+	SUMAN_RESET CSS version1.1  
+-------------------------------------------*/
+
+* { outline:0!important; padding:0;	margin:0;}
+
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video 
+
+{ margin:0; padding:0; border:0; outline:0; font-size:100%; font:inherit;}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display:block;}
+
+html { height:100%; -webkit-font-smoothing:antialiased; margin:0; padding:0; border:0;}
+
+/* ------------- LINKS */
+
+a { color: #0078c1;	text-decoration: none;}
+a:hover { color: #111; text-decoration: none;}
+
+/*-------------- COMMON FORMATTING */
+
+
+input[type=text], input[type=password] { outline: none;} label, input[type=submit],input[type=button] { cursor:pointer;}
+
+/*------------------------------ font-face -------------------------------*/
+
+h1, h2, h3, h4, h5, h6 { margin:0; padding:0; font-weight:normal;}
+
+
+
+@font-face {
+    font-family: 'pantonregular';
+    src: url('../font/fontfabric_-_panton-webfont.eot');
+    src: url('../font/fontfabric_-_panton-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/fontfabric_-_panton-webfont.woff2') format('woff2'),
+         url('../font/fontfabric_-_panton-webfont.woff') format('woff'),
+         url('../font/fontfabric_-_panton-webfont.ttf') format('truetype'),
+         url('../font/fontfabric_-_panton-webfont.svg#pantonregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pantonbold';
+    src: url('../font/fontfabric_-_panton_bold-webfont.eot');
+    src: url('../font/fontfabric_-_panton_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/fontfabric_-_panton_bold-webfont.woff2') format('woff2'),
+         url('../font/fontfabric_-_panton_bold-webfont.woff') format('woff'),
+         url('../font/fontfabric_-_panton_bold-webfont.ttf') format('truetype'),
+         url('../font/fontfabric_-_panton_bold-webfont.svg#pantonbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'pantonthin';
+    src: url('../font/fontfabric_-_panton_thin-webfont.eot');
+    src: url('../font/fontfabric_-_panton_thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/fontfabric_-_panton_thin-webfont.woff2') format('woff2'),
+         url('../font/fontfabric_-_panton_thin-webfont.woff') format('woff'),
+         url('../font/fontfabric_-_panton_thin-webfont.ttf') format('truetype'),
+         url('../font/fontfabric_-_panton_thin-webfont.svg#pantonthin') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+img { border:0;} .clear { clear:both;}
+.left { float:left;} .right { float:right;}
+
+sup { position:relative; bottom:0.3em; vertical-align:baseline;}
+sub { position:relative; bottom:-0.2em;	vertical-align:baseline;}
+hr { background: #fff;/*NS FF OP */ color: #fff;/*IE*/ border: none;/*FF NS OP*/ height: 1px;/*FF NS OP*/ width: 100%; padding:0; margin:0;}
+hr.color1 { background: #8a8481;/*NS FF OP */ color: #8a8481;/*IE*/}
+
+blockquote, q {	quotes:none;}
+blockquote:before, blockquote:after, q:before, q:after { content:''; content:none;}
+
+/*-------------- FOCUS */
+:focus { outline:none;}
+
+/*-------------- INS */
+ins { margin: 0; padding: 0 0 0.3em 0;}
+
+/* ------------- BASE TYPOGRAPHY */
+
+p { color:#fff; font-size: 14px; line-height: 20px;}
+ul li {	list-style: none;}
+ol li { list-style: none;}
+del { text-decoration:line-through;}
+
+.tcenter { text-align:center;}
+.tright { text-align:right;}
+.tleft { text-align:left;}
+
+table { border-collapse:collapse; border-spacing:0;}
+form { margin:0; padding:0;	display:inline;}
+
+input[type=submit], input[type=button], input[type="reset"] { cursor:pointer;}
+input[type=text], input[type=password] { outline: none;}
+
+.group:after { visibility: hidden; display: block; content: "";	clear: both; height: 0;}
+* html .group { zoom: 1; } /* IE6 */
+*:first-child+html .group { zoom: 1; } /* IE7 */
+
+.clearfix() {
+  zoom: 1;
+  &:before { 
+    content: ''; 
+    display: block; 
+  }
+  &:after { 
+    content: ''; 
+    display: table; 
+    clear: both; 
+  }
+}
+
+.wrap960 { width:960px; margin: 0 auto;}
+
+/* ------------- MARGIN */
+
+.m0 { margin:0 !important;}
+
+.mt0 { margin-top:0 !important;}
+.mt5 { margin-top:5px;}
+.mt10 { margin-top:10px;}
+.mt15 { margin-top:15px;}
+.mt20 { margin-top:20px;}
+.mt25 { margin-top:25px;}
+.mt30 { margin-top:30px;}
+.mt35 { margin-top:35px;}
+.mt40 { margin-top:40px;}
+.mt45 { margin-top:45px;}
+.mt50 { margin-top:50px;}
+
+.ml5 { margin-left:5px;}
+.ml10 { margin-left:10px;}
+.ml15 { margin-left:15px;}
+.ml20 { margin-left:20px;}
+.ml25 { margin-left:25px;}
+.ml30 { margin-left:30px;}
+.ml35 { margin-left:35px;}
+.ml40 { margin-left:40px;}
+.ml45 { margin-left:45px;}
+.ml50 { margin-left:50px;}
+
+.mr5 { margin-right:5px;}
+.mr10 { margin-right:10px;}
+.mr15 { margin-right:15px;}
+.mr20 { margin-right:20px;}
+.mr25 { margin-right:25px;}
+.mr30 { margin-right:30px;}
+.mr35 { margin-right:35px;}
+.mr40 { margin-right:40px;}
+.mr45 { margin-right:45px;}
+.mr50 { margin-right:50px;}
+
+.mb5 { margin-bottom:5px;}
+.mb10 { margin-bottom:10px;}
+.mb15 { margin-bottom:15px;}
+.mb20 { margin-bottom:20px;}
+.mb25 { margin-bottom:25px;}
+.mb30 { margin-bottom:30px;}
+.mb35 { margin-bottom:35px;}
+.mb40 { margin-bottom:40px;}
+.mb45 { margin-bottom:45px;}
+.mb50 { margin-bottom:50px;}
+
+/* ------------- PADDING */
+
+.pt5 { padding-top:5px;}
+.pt10 { padding-top:10px;}
+.pt15 { padding-top:15px;}
+.pt20 { padding-top:20px;}
+.pt25 { padding-top:25px;}
+.pt30 { padding-top:30px;}
+.pt35 { padding-top:35px;}
+.pt40 { padding-top:40px;}
+.pt45 { padding-top:45px;}
+.pt50 { padding-top:50px;}
+
+.pl5 { padding-left:5px;}
+.pl10 { padding-left:10px;}
+.pl15 { padding-left:15px;}
+.pl20 { padding-left:20px;}
+.pl25 { padding-left:25px;}
+.pl30 { padding-left:30px;}
+.pl35 { padding-left:35px;}
+.pl40 { padding-left:40px;}
+.pl45 { padding-left:45px;}
+.pl50 { padding-left:50px;}
+
+.pr5 { padding-right:5px;}
+.pr10 { padding-right:10px;}
+.pr15 { padding-right:15px;}
+.pr20 { padding-right:20px;}
+.pr25 { padding-right:25px;}
+.pr30 { padding-right:30px;}
+.pr35 { padding-right:35px;}
+.pr40 { padding-right:40px;}
+.pr45 { padding-right:45px;}
+.pr50 { padding-right:50px;}
+
+.pb5 { padding-bottom:5px;}
+.pb10 { padding-bottom:10px;}
+.pb15 { padding-bottom:15px;}
+.pb20 { padding-bottom:20px;}
+.pb25 { padding-bottom:25px;}
+.pb30 { padding-bottom:30px;}
+.pb35 { padding-bottom:35px;}
+.pb40 { padding-bottom:40px;}
+.pb45 { padding-bottom:45px;}
+.pb50 { padding-bottom:50px;}
+
+.posi_global { position:relative;}
+.no-bg { background:none !important;}
+
+.valign-top { vertical-align:top;}
+.valign-middle { vertical-align:middle;}
+.valign-middle { vertical-align:bottom;}
+
+.border-bootom { height:1px; border-bottom:1px solid #C0C0C0; margin:18px 0;}
+.border-top { height:1px; border-bottom:1px solid #C0C0C0; margin:18px 0;}
+
+.clear10 { clear:both; height:10px;}
+.clear20 { clear:both; height:20px;}
+.clear30 { clear:both; height:30px;}
+.clear40 { clear:both; height:40px;}
+.clear50 { clear:both; height:50px;}
+.clear60 { clear:both; height:60px;}
+.clear70 { clear:both; height:70px;}
+.clear80 { clear:both; height:80px;}
+.clear90 { clear:both; height:90px;}
+.clear100 { clear:both; height:100px;}
+
+/*chrome only css
+----------------------------------------------------------------*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+
+}
