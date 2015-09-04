@@ -81,6 +81,9 @@ class DestinationsController extends Controller
         $this->view->params['current_item'] = "Destinations";
         
         if(!isset($area) || $area == null) {
+            
+            $area = \backend\modules\destinations\models\Area::findOne([\backend\modules\settings\models\Settings::getParamValue("areas-settings", "area-worldmap-id", 1)]);
+                        
             $page = CmsPage::findOne(["TYPE"=>  CMSConstants::$CMS_PAGE_HOME , "STATE"=>  CMSConstants::$CMS_CONTENT_STATE_PUBLISHED]);
             
             $post = CmsPostContent::findOne(['ID'=>$page->CONTENT_ID]);
@@ -97,7 +100,7 @@ class DestinationsController extends Controller
         
         //$content = $this->renderPartial("contentHome", ["content"=>$post->CONTENT, "title"=>$post->TITLE]);
         
-        return $this->render("contentArea", ["content"=>$post->CONTENT, "title"=>$post->TITLE]);
+        return $this->render("contentArea", ["content"=>$post->CONTENT, "title"=>$post->TITLE, 'area'=>$area]);
         
         //return $this->redirect('site/page',1);
     }

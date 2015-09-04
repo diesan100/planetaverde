@@ -18,6 +18,7 @@ class AppAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
+        'css/flexcrollstyles.css',
         /*'css/myprojectt.css',
         'css/google_fonts.css',
         'css/pgwslider.css',        
@@ -25,9 +26,12 @@ class AppAsset extends AssetBundle
     ];
     
     public $js = [
-        'js/menu.js',
-        'js/main.js',    
+        
+        'js/flexcroll.js',    
         'js/jquery.slimscroll.js',
+        'js/jquery.maphilight.js',
+        'js/menu.js',
+        'js/main.js',
     ];
     public $depends = [
         'yii\web\JqueryAsset',

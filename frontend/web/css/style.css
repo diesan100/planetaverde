@@ -15,7 +15,7 @@ body, html { width:100%; height:100%;}
 .navigation li a { background:#EBE3B2; border-right: 6px solid #e85655; color: #e85655; font-size: 18px; line-height: 46.5px; padding: 7.5px 25px; text-decoration:none;transition: -webkit-transition: padding 0.5s; transition: padding 0.5s; font-family:pantonbold;}
 .navigation li a:hover,.navigation li.active a { border-right: 6px solid #6e904d !important; padding: 7.5px 35px !important; font-family:pantonregular;}
 
-.spoggle { position:fixed; right:0px; z-index:9; height:75vh; bottom:0; width:300px; background:rgba(231,233,232,0.9);}
+.spoggle { position:fixed; right:0px; z-index:9; height:75vh; bottom:0; width:400px; background:rgba(231,233,232,0.9);}
 .spoggle .softArrow img { margin-left:0; position:relative; z-index:99;} .mapBox { position:relative;} .softArrow { position:absolute; left:0; top:0;}
 .contentBox { padding:7%;} .mapthis { width:100%;}
 h1, .heading1 { font-size:26px; color:#333; margin-bottom:18px; font-weight:bold;}
@@ -25,7 +25,7 @@ h4, .heading4, .contentBox p { font-size:16px; color:#333;}
 .spoggle { transition: width .5s ease-in-out; -moz-transition: width .5s ease-in-out; -webkit-transition: width .5s ease-in-out;}
 
 .highlight .spogglez { display:none;}
-.pluto { position:absolute; right:24%; bottom:28px; z-index:9;}
+.pluto { position:absolute; /*right:24%;*/right: 435px; bottom:28px; z-index:9;}
 
 .menu-link { font-size: 1.5em; position: absolute; right:10px; top:10px; z-index:99; display:none;}
 .menu-link:link, .menu-link:visited { background: rgba(255, 255, 255, 1) none repeat scroll 0 0; color: #e85655; padding: 0.2em 0.4em;}
@@ -77,11 +77,11 @@ h4, .heading4, .contentBox p { font-size:16px; color:#333;}
 .linkz,.linkz:hover { font-size:12px; color:#fff; text-decoration:underline;}
 .boxo:first-child { border-bottom:3px solid #fff;}
 
-/*.filosofia { width:800px; background:rgba(235,227,137,0.9); position:absolute; left:50%; top:50%; margin:-250px 0 0 -400px; z-index:9; height:500px; padding:2%; overflow:auto;}*/
-.filosofia { width:50%; background:rgba(235,227,137,0.9); position:absolute; left:25%; top:25%; z-index:9; height:65%; padding:1% 0.5% 1% 1%; overflow:hidden;}
+/*.pageContent { width:800px; background:rgba(235,227,137,0.9); position:absolute; left:50%; top:50%; margin:-250px 0 0 -400px; z-index:9; height:500px; padding:2%; overflow:auto;}*/
+.pageContent { width:66%; background:rgba(235,227,137,0.9); position:absolute; left:25%; top:25%; z-index:9; height:65%; padding:1% 0.5% 1% 1%; overflow:hidden;}
 
-.bigtitle1 { color:#E85656 !important; font-family:pantonregular; line-height: 25px; font-size:32px; margin-bottom:20px;}
-.filosofia p { color:#1d252a;}
+.bigtitle1 { color:#E85656 !important; font-family:pantonregular; line-height: 25px; font-size:32px; margin-bottom:20px; line-height: 1em;}
+.pageContent p { color:#1d252a;}
 
 .footbtn { position:absolute; right:25px; bottom:25px;}
 
@@ -122,7 +122,7 @@ h4, .heading4, .contentBox p { font-size:16px; color:#333;}
 .borderbellow { padding-bottom:12px; border-bottom:1px solid #e85656;}
 
 .green { background:rgba(114,150,75,0.9) !important; color:#fff !important;}
-.green.filosofia p { color:#fff;} .green .profileHead { color:#fff !important;}
+.green.pageContent p { color:#fff;} .green .profileHead { color:#fff !important;}
 .green .rightpannel { width:100%; float:none;}
 .green .smlsbtn { color:#6e9380 !important;} .green .maplisting { border-bottom:1px solid #fff;}
 .green .maplisting p { color:#fff !important; font-size:15px; line-height:16px;}
@@ -176,7 +176,7 @@ and (max-width : 375px) {
 .boxo { padding:13px 25px !important;}
 .bigtitle { line-height: 20px; margin-bottom: 7px;}
 .boxo input { padding:2px 15px;}
-/*.filosofia { width:200px; margin-left:-100px; height:300px; margin-top:0px; top:25%;}*/
+/*.pageContent { width:200px; margin-left:-100px; height:300px; margin-top:0px; top:25%;}*/
 .carousel-indicators { bottom:30px !important;}
 .eRegistration { top: 68%;}
 .login { top:85px; z-index:10;}
@@ -184,7 +184,7 @@ and (max-width : 375px) {
 .login li a { padding: 3.5px 4.5px !important;}
 .boxo { padding: 10px 15px !important;}
 
-.filosofia { left: 5%; right: 5%; top: 22%; width: 90%;}
+.pageContent { left: 5%; right: 5%; top: 22%; width: 90%;}
 .leftpannel { float: none; margin: 0 auto; width: 94%;}
 .rightpannel { float: none; margin: 0 auto; width: 94%;}
 .minilisting { float: none; margin: 0 auto; width: 94%;}
@@ -198,13 +198,13 @@ and (max-width : 480px) {
 	
 .logo > img { width: 55%;}
 .mirchiBox { width: 91%;}
-/*.filosofia { width:200px; margin-left:0px; height:300px; margin-top:0px; top:25%;}*/
+/*.pageContent { width:200px; margin-left:0px; height:300px; margin-top:0px; top:25%;}*/
 .menu-link { display:block;}
 .navigation { display:none;}
 .login li a { padding: 3.5px 4.5px !important;}
 .login { top:60px; z-index:10;}
 
-.filosofia { left: 5%; right: 5%; top: 22%; width: 90%;}
+.pageContent { left: 5%; right: 5%; top: 22%; width: 90%;}
 .leftpannel { float: none; margin: 0 auto; width: 94%;}
 .rightpannel { float: none; margin: 0 auto; width: 94%;}
 .minilisting { float: none; margin: 0 auto; width: 94%;}
@@ -222,7 +222,7 @@ and (max-width : 768px) {
 .eRegistration  { width:400px; left:70%;}
 .boxo { padding: 25px;}
 
-/*.filosofia { width:400px; margin-left:-150px; height:300; margin-top:-150px;}*/
+/*.pageContent { width:400px; margin-left:-150px; height:300; margin-top:-150px;}*/
 
 }
 
@@ -248,7 +248,7 @@ and (max-width : 1024px) {
 and (min-width : 768px)
 and (max-width : 1024px) {
 	
-/*.filosofia { width:600px; margin-left:-200px; height:400px; margin-top:-200px;}*/
+/*.pageContent { width:600px; margin-left:-200px; height:400px; margin-top:-200px;}*/
 
 }
 
@@ -265,7 +265,7 @@ and (min-width : 980px)
 and (max-width : 1280px) {
 	
 .pluto { right: 32%;}
-/*.filosofia { width:600px; margin-left:-100px;}*/
+/*.pageContent { width:600px; margin-left:-100px;}*/
 .logo > img { width: 70%; transition:}
 }
 

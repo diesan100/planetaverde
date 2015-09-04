@@ -11,24 +11,24 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-6">
             <div class="panel panel-white">
                 <div class="panel-heading border-light">
-                    <h4 class="panel-title"><span class="text-bold">Configuración</span></h4>                    
+                    <h4 class="panel-title"><span class="text-bold">Settings</span></h4>                    
                 </div>
                 <div class="panel-body">
                     <div class="col-md-12 no-padding">
                         <p>
-                            Configura las variables de la aplicación. Generalmente ninguna variable tendrá que ser eliminada o añadida.                            
+                            Set up app params. They are not usually deleted or added once the app is working.       
                         </p>
                         <p>
-                            Los parámetros están distribuidos en grupos (Los parámetros pueden ser filtrados por grupos en la página correpospondiente).
+                            Parameters are grouped by group name. A group represents a module or general functionality.
                         </p>
                         <div class="alert alert-block alert-danger fade in">                                
-                            <h4 class="alert-heading">¡Precaución!</h4>
+                            <h4 class="alert-heading">¡Warning!</h4>
                             <p>
-                                La configuración errónea de alguno de los parámetros puede tener consecuencias graves en el funcionamiento general de la aplicación o en módulos especialmente delicados como las pasarelas de pago.
+                                Mistaken set up of any parameter can cause general failure of the app.
                             </p>                                
                         </div>
                         <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Ir a Configuración <i class='fa fa-chevron-right'></i>", Url::to(['//settings/settings/index']), ["class"=>"btn btn-orange"]);?>
+                            <?= yii\helpers\Html::a("Go to Settings <i class='fa fa-chevron-right'></i>", Url::to(['//settings/settings/index']), ["class"=>"btn btn-orange"]);?>
                         </p>
                     </div>
                 </div>
@@ -37,16 +37,20 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-6">        
             <div class="panel panel-white">
                 <div class="panel-heading border-light">
-                    <h4 class="panel-title"><span class="text-bold">Mensajes (Bocadillos)</span> de ayuda</h4>                    
+                    <h4 class="panel-title"><span class="text-bold">Background Images</span> Configuration</h4>                    
                 </div>
                 <div class="panel-body">
                     <div class="col-md-12 no-padding">
                         <p>
-                            Configura los mensajes incluidos en los bocadillos de ayuda de la aplicación.
-                        </p>                        
-                        <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Ir a Mensajes <i class='fa fa-chevron-right'></i>", Url::to(['//settings/messages/index']), ["class"=>"btn btn-orange"]);?>
+                            Set up background images for each section of the app.
+                        </p>   
+                        <p>
+                            <img src="<?=Yii::getAlias("@web")?>/images/settingImagesPic.png" width="100%" height="auto">
                         </p>
+                        <p style="text-align: right;">
+                            <?= yii\helpers\Html::a("Go to Background Images <i class='fa fa-chevron-right'></i>", Url::to(['//settings/background-images/index']), ["class"=>"btn btn-orange"]);?>
+                        </p>
+                        
                     </div>
                 </div>
             </div>

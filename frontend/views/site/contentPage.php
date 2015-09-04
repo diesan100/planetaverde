@@ -1,6 +1,6 @@
-<section class="filosofia">
-    <div id='mycustomscroll' class='flexcroll'>
-        <p class="bigtitle1"><?=$this->title;?></p>
+<section class="pageContent">
+    <div class='flexcroll'>
+        <h1 class="bigtitle1"><?=$this->title;?></h1>
         <?= $content ?>
     </div>
 </section>

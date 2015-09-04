@@ -4,11 +4,19 @@
     </a>
     <div class="spogglez"> 
         <div class="mapBox">
-            <a href="#"><img class="mapthis" src="<?=Yii::getAlias("@web")?>/images/mapToggle.jpg" alt="" /></a>
+            <!--<a href="#">-->
+                <!--
+                <img class="mapthis" src="<?=Yii::getAlias("@web")?>/images/mapToggle.jpg" alt="" />
+                -->
+                <?= frontend\widgets\MappedImageMapWidget::widget(["area"=>$area]);?>
+                
+            <!--</a>-->
         </div>
         <div class="contentBox">
-            <h1><?= $title ?></h1>
-            <?= $content ?>
+            <div class='flexcroll'>
+                <h1><?= $title ?></h1>
+                <?= $content ?>
+            </div>
         </div>
     </div>
 </div>

@@ -56,4 +56,12 @@ class Area extends \yii\db\ActiveRecord
             'map_image' => Yii::t('app', 'Map Image'),
         ];
     }
+    
+    public function getChildren() {
+        return AreaSearch::findAll(["parent"=>$this->id]);
+    }
+    
+    public function getUrl() {
+        return $this->name;
+    }
 }

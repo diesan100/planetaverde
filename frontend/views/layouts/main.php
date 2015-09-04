@@ -144,7 +144,7 @@ AppAsset::register($this);
   <!-- Carousel nav -->
   <div class="mirchiBox">
   	<a class="carousel-control left" href="#carousel" data-slide="prev"><img src="<?=Yii::getAlias("@web")?>/images/softArrowLeft.png" alt="" /></a>
-    <a href="#" class="copyright">Destino | &copy; Usuario</a>
+    <span class="copyright">Destination | &copy; User</span>
     <a class="carousel-control right" href="#carousel" data-slide="next"><img src="<?=Yii::getAlias("@web")?>/images/softArrowRight.png" alt="" /></a>
   </div>
   <p class="pluto">Impressum | AGBs</p>
