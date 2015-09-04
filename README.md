@@ -1,15 +1,5 @@
-Yii 2 Advanced Application Template
+PLANETA VERDE
 ===================================
-
-Yii 2 Advanced Application Template is a skeleton Yii 2 application best for
-developing complex Web applications with multiple tiers.
-
-The template includes three tiers: front end, back end, and console, each of which
-is a separate Yii application.
-
-The template is designed to work in a team development environment. It supports
-deploying the application in different environments.
-
 
 DIRECTORY STRUCTURE
 -------------------
@@ -46,6 +36,8 @@ vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 tests                    contains various tests for the advanced application
     codeception/         contains tests developed with Codeception PHP Testing Framework
+sql                    contains sqls to replicate the app
+    sql_files/         
 ```
 
 
