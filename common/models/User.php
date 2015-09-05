@@ -40,8 +40,6 @@ use \backend\modules\settings\models\Settings;
 * @property string $company
 * @property string $type
 * @propery datetime $creation_date
-* @property Membership $membership
-* @property AccountSettings $account_settings
 */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -280,30 +278,7 @@ class User extends ActiveRecord implements IdentityInterface
         
         return AccountSettings::findOne(["user_id"=>$this->id]);
     }
-    
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getMembership()
-    {
-        return $this->hasOne(Membership::className(), ['user_id' => 'id']);
-    }
-    
-    
-    /**
-     * Devuelve la cadena URL del directorio de dicho usuario.
-     * Crea el directorio sino existe.
-     * 
-     */
-    public static function getUserFolder($user_id){
-        $uploadsAbsolutePath = \common\utils\MyprojecttUtils::getUploadsAbsoluteFile();
-        $usersDirectory = $uploadsAbsolutePath . DIRECTORY_SEPARATOR . $user_id;
-        if (!file_exists($usersDirectory)) {
-            \yii\helpers\BaseFileHelper::createDirectory($usersDirectory);
-        }
-        return $usersDirectory;
-    }
-    
+       
     /**
      * Returns user full name
      * @return type
@@ -321,11 +296,6 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function updateAccess() {
         $this->last_acces = new Expression("NOW()");
-        $this->inactivo30 = false;
-        $this->inactivo45 = false;
-        $this->inactivo55 = false;
-        $this->inactivo60 = false;
-        $this->inactivo61 = false;
         $this->save();
     }
     
@@ -334,110 +304,6 @@ class User extends ActiveRecord implements IdentityInterface
      * including every object that makes reference to it
      */
     public function deleteUser() {
-        
-        // Notify admin
-        \common\mail\MyMailAdmin::send("Borrando usuario", "Se procede al borrado (Baja definitiva) el usuario con nombre: '" . $this->getFullName() . "' y email '" . $this->email . "' en el sistema");
-        
-        // This is the user ID that is gonna replace this user ID in shared resources
-        $defatulUserId = Settings::getParamValue("general", "default-user-id");
-        
-        // Deactivate user
-        $this->status = User::STATUS_DELETED;            
-        $this->state = User::STATUS_DELETED;          
-        $this->save();
-
-        // Delete projects
-        $projects = Project::findAll(["owner"=>$this->id]);
-        if($projects != null) {
-            foreach ($projects as $project) {
-                $project->deleteMe();
-            }
-        }
-
-        /******* The user can have other objects in not owned projects *********/
-        $invitations = \common\models\Invitation::findAll(["user_id"=>$this->id]);
-        
-        foreach ($invitations as $invitation) {
-                \common\models\ObjectPermission::deleteAll(["invitation"=>$invitation->id]);
-                $invitation->delete();
-        }
-        
-        // Pending downloads
-        \common\models\PendingDownloads::deleteAll(["user_id"=>$this->id]);
-        
-        // Files
-        $ownedFiles = \common\models\File::findAll(["owner" => $this->id]);       
-        foreach ($ownedFiles as $file) {
-            $file->owner = $defatulUserId;
-            $file->save();
-        }
-        
-        // Revisions
-        $ownedRevisions = \common\models\Revision::findAll(["owner" => $this->id]);       
-        foreach ($ownedRevisions as $revision) {
-            $revision->owner = $defatulUserId;
-            $revision->save();
-        }
-        
-        // Eventos
-        $eventos = \common\models\MyEvent::getByUser($this->id);   
-        
-        foreach ($eventos as $event) {
-            if($event->created_by == $this->id) {
-                $event->created_by = $defatulUserId;
-            }
-            
-            if($event->receiver_id == $this->id) {
-                $event->receiver_id = $defatulUserId;
-            }
-            
-            if($event->sender_id == $this->id) {
-                $event->sender_id = $defatulUserId;
-            }
-            
-            $event->save();
-        }
-        
-        // Invoices
-        $invoices = \backend\modules\billing\models\Invoice::findAll(["user_id" => $this->id]);       
-        foreach ($invoices as $invoice) {
-            $invoice->user_id = $defatulUserId;
-            $invoice->save();
-        }
-        
-        // Promos activity
-        $promosActivity = \backend\modules\promos\models\PromosActivity::findAll(["user_id" => $this->id]);       
-        foreach ($promosActivity as $activity) {
-            $activity->user_id = $defatulUserId;
-            $activity->save();
-        }
-
-        // Delete settings
-        AccountSettings::deleteAll(["user_id"=>$this->id]);
-        
-        // Delete membership
-        $this->membership->delete();
-        
-         // Gateway if it is needed
-        if(!$this->membership->free) {
-            // Dar de baja los pagos en la pasarela.
-            if($this->membership->gateway_type == Membership::TYPE_GATEWAY_PAYPAL) {
-                $paypalActions =  new PaypalFuncions();
-                $paypalActions->ManageRecurringPaymentsProfileStatus(
-                        $this->membership->paypal_profile_id, 
-                        PaypalFuncions::ACTION_CANCEL);
-
-                $this->membership->free = true;
-            } else if($this->membership->gateway_type == Membership::TYPE_GATEWAY_REDSYS) {
-                //TODO: Implementar
-            }
-        }
-        
-        // Finnaly delete user
-        $this->delete();
-
-        // Notfy Admin
-        \common\mail\MyMailAdmin::send("Usuario borrado", "El usuario con nombre: '" . $this->getFullName() . "' y email '" . $this->email . "' ha sido correctamente eliminado del sistema");
         
     }
 }
