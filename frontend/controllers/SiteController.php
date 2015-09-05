@@ -222,7 +222,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect('/myprojectt/usersbackend/web/');
+            return $this->redirect(\yii\helpers\Url::to(["/user/idnex"]));
         } else {
             if(isset($returnSignup) && $returnSignup) {
                 return $this->render('signup', [

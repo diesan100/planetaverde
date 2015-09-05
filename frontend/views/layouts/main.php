@@ -1,16 +1,8 @@
 <?php
 use frontend\assets\AppAsset;
 use yii\helpers\Html;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
-use yii\widgets\Breadcrumbs;
-use common\models\CmsMenuItem;
-use common\models\CmsMenu;
-use yii\helpers\Url;
 use common\widgets\MenuWidget;
-use kartik\widgets\ActiveForm;
 use common\widgets\SettingsParamWidget;
-use backend\modules\settings\models\Settings;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -64,8 +56,18 @@ AppAsset::register($this);
     <ul class="login">
         <li><a href="#"><img src="<?=Yii::getAlias("@web")?>/images/carro.png" alt="" /></a></li>
         <li><a href="#" class="oddz"><input type="text" placeholder="search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'search'" /><img src="<?=Yii::getAlias("@web")?>/images/search.png" alt="" /></a></li>
-        <li><a href="#"><img src="<?=Yii::getAlias("@web")?>/images/facebook.png" alt="" /></a></li>
-        <li><a href="#"><img src="<?=Yii::getAlias("@web")?>/images/login.png" alt="" /></a></li>
+        <li><a href="<?= backend\modules\settings\models\Settings::getParamValue("", "");?> "><img src="<?=Yii::getAlias("@web")?>/images/facebook.png" alt="" /></a></li>
+        
+        <li>
+            <?php 
+                if(Yii::$app->user->isGuest) { ?>
+                    <a href="<?= yii\helpers\Url::to(["site/signup"]); ?>"><img src="<?=Yii::getAlias("@web")?>/images/login.png" alt="" /></a>
+                <?php } else { ?>
+                    <a href="<?= yii\helpers\Url::to(["site/logout"]); ?>" data-method="post">Log out</a>
+                <?php } ?>
+                        
+        </li>
+        
     </ul>
     
     <?= $content; ?>
