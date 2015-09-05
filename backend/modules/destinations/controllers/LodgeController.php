@@ -3,16 +3,16 @@
 namespace app\modules\destinations\controllers;
 
 use Yii;
-use backend\modules\destinations\models\Area;
-use backend\modules\destinations\models\AreaSearch;
+use backend\modules\destinations\models\Lodge;
+use backend\modules\destinations\models\LodgeSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * AreaController implements the CRUD actions for Area model.
+ * LodgeController implements the CRUD actions for Lodge model.
  */
-class AreaController extends Controller
+class LodgeController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class AreaController extends Controller
     }
 
     /**
-     * Lists all Area models.
+     * Lists all Lodge models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new AreaSearch();
+        $searchModel = new LodgeSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class AreaController extends Controller
     }
 
     /**
-     * Displays a single Area model.
+     * Displays a single Lodge model.
      * @param integer $id
      * @return mixed
      */
@@ -54,7 +54,7 @@ class AreaController extends Controller
     }
 
     /**
-     * Creates a new Area model.
+     * Creates a new Lodge model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
@@ -62,10 +62,10 @@ class AreaController extends Controller
     {
         $this->view->params['no_wrapp'] = true;
         
-        $model = new Area();
+        $model = new Lodge();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            $notification_msg = Yii::t('app', '{className} successfully created.', ["className"=>"Area"]);
+            $notification_msg = Yii::t('app', '{className} successfully created.', ["className"=>"Lodge"]);
             return $this->redirect(['update', 'id' => $model->id, 'msg'=>$notification_msg]);
         } else {
             return $this->render('create', [
@@ -75,7 +75,7 @@ class AreaController extends Controller
     }
 
     /**
-     * Updates an existing Area model.
+     * Updates an existing Lodge model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -89,7 +89,7 @@ class AreaController extends Controller
         if ($model->load(Yii::$app->request->post())) {
             $model->save();
                     
-            $this->view->params['notification_msg'] = Yii::t('app', '{className} successfully updated.', ["className"=>"Area"]);
+            $this->view->params['notification_msg'] = Yii::t('app', '{className} successfully updated.', ["className"=>"Lodge"]);
         } else if($msg!=null) {
             $this->view->params['notification_msg'] = $msg;
         }
@@ -100,7 +100,7 @@ class AreaController extends Controller
     }
 
     /**
-     * Deletes an existing Area model.
+     * Deletes an existing Lodge model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -113,15 +113,15 @@ class AreaController extends Controller
     }
 
     /**
-     * Finds the Area model based on its primary key value.
+     * Finds the Lodge model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Area the loaded model
+     * @return Lodge the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Area::findOne($id)) !== null) {
+        if (($model = Lodge::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');

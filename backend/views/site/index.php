@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             Manage everything reated with Festinations and Preset Trips
                         </p>
                         <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Go to Destinations <i class='fa fa-chevron-right'></i>", Url::to(['/planes/plan/index']), ["class"=>"btn btn-orange"]);?>
+                            <?= yii\helpers\Html::a("Go to Destinations <i class='fa fa-chevron-right'></i>", Url::to(['/destinations/site/index']), ["class"=>"btn btn-orange"]);?>
                         </p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             Manage Customized Trips, Budgets, Usert Trips and more
                         </p>
                         <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Go to Trips Managment <i class='fa fa-chevron-right'></i>", Url::to(['/billing/site/index']), ["class"=>"btn btn-orange"]);?>
+                            <?= yii\helpers\Html::a("Go to Trips Managment <i class='fa fa-chevron-right'></i>", Url::to(['/trips/site/index']), ["class"=>"btn btn-orange"]);?>
                         </p>
                     </div>
                 </div>
@@ -57,7 +57,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             Manage Client Users and Admin Users
                         </p>
                         <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Go to Users <i class='fa fa-chevron-right'></i>", Url::to(['/planes/plan/index']), ["class"=>"btn btn-orange"]);?>
+                            <?= yii\helpers\Html::a("Go to Users <i class='fa fa-chevron-right'></i>", Url::to(['/users/site/index']), ["class"=>"btn btn-orange"]);?>
                         </p>
                     </div>
                 </div>
@@ -74,7 +74,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             Content Managment System (CMS) for the front site. Manage news and static contents.
                         </p>
                         <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Go to CMS <i class='fa fa-chevron-right'></i>", Url::to(['/billing/site/index']), ["class"=>"btn btn-orange"]);?>
+                            <?= yii\helpers\Html::a("Go to CMS <i class='fa fa-chevron-right'></i>", Url::to(['/cms/site/index']), ["class"=>"btn btn-orange"]);?>
                         </p>
                     </div>
                 </div>
@@ -94,7 +94,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             Manage Application Settings
                         </p>
                         <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Go to Settings <i class='fa fa-chevron-right'></i>", Url::to(['/planes/plan/index']), ["class"=>"btn btn-orange"]);?>
+                            <?= yii\helpers\Html::a("Go to Settings <i class='fa fa-chevron-right'></i>", Url::to(['/settings/site/index']), ["class"=>"btn btn-orange"]);?>
                         </p>
                     </div>
                 </div>

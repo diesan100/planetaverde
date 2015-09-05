@@ -39,7 +39,7 @@ return [
             'class' => 'app\modules\destinations\DestinationsModule',
         ],
         'trips' => [
-            'class' => 'app\modules\settings\TripsModule',
+            'class' => 'app\modules\trips\TripsModule',
         ],
     ],
     'components' => [

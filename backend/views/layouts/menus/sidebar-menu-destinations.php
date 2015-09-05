@@ -21,3 +21,20 @@ use yii\helpers\Url;
             </li>
     </ul>
 </li>
+
+<li <?= (Yii::$app->controller->id === "lodge")? "class='active open'": ""; ?>>
+    <a href="javascript:void(0)"><i class="fa fa-bed"></i> <span
+            class="title"> Lodges </span><i class="icon-arrow"></i> </a>
+    <ul class="sub-menu">
+            <li <?= (Yii::$app->controller->action->id === "index")? "class='active'": ""; ?>>
+                    <a href="<?=Url::to(['//destinations/lodge/index'])?>"> 
+                        <span class="title"> Lodges List </span>
+                    </a>
+            </li>
+            <li <?= (Yii::$app->controller->action->id === "create")? "class='active'": ""; ?>>
+                    <a href="<?=Url::to(['//destinations/lodge/create'])?>"> 
+                        <span class="title"> New lodge </span>
+                    </a>
+            </li>
+    </ul>
+</li>

@@ -3,37 +3,33 @@
 use yii\helpers\Html;
 use kartik\grid\GridView;
 use common\modules\cms\constants\CMSConstants;
-use common\constants\PVConstants;
 
 /* @var $this yii\web\View */
-/* @var $searchModel backend\modules\destinations\models\AreaSearch */
+/* @var $searchModel backend\modules\destinations\models\LodgeSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Areas');
+$this->title = Yii::t('app', 'Lodges');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="area-index">
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+<div class="lodge-index">
 
     <p>
         <?= Html::a(Yii::t('app', 'Create {modelClass}', [
-    'modelClass' => 'Area',
-]), ['create'], ['class' => 'btn btn-success']) ?>
+            'modelClass' => 'Lodge',
+        ]), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-
-                'name',
-                [
-                    'attribute'=>'parent',
+            'name',
+            [
+                    'attribute'=>'area',
                     'value'=>function ($model, $key, $index, $widget) {
-                        $parent = \backend\modules\destinations\models\Area::findOne(["id"=>$model->parent]);
-                        if(isset($parent) && $parent != NULL) {
-                            return $parent->name;
+                        $area = \backend\modules\destinations\models\Area::findOne(["id"=>$model->area]);
+                        if(isset($area) && $area != NULL) {
+                            return $area->name;
                         } else {
                             return "(not set)";
                         }
@@ -41,9 +37,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filterType'=>GridView::FILTER_SELECT2,
                     'filterInputOptions'=>['placeholder'=>'Any Area'],
                     'filter'=>  yii\helpers\ArrayHelper::map(\common\modules\cms\models\CmsPage::find()->asArray()->all(), 'ID', 'TITLE'), 
-                ],          
-                'description',
-                ['attribute'=>'state',
+                ], 
+            'description',
+            ['attribute'=>'state',
                     'value'=>function ($model, $key, $index, $widget) {
                         return CMSConstants::$CMS_CONTENTS_STATES[$model->state];                    
                     },
@@ -55,20 +51,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'filterInputOptions'=>['placeholder'=>'Any type'], 
                 ],
-                ['attribute'=>'type',
-                    'value'=>function ($model, $key, $index, $widget) {
-                        return PVConstants::$AREA_TYPES[$model->type];                    
-                    },
-                    'width'=>'10%', 
-                    'filterType'=>GridView::FILTER_SELECT2,
-                    'filter'=>  PVConstants::$AREA_TYPES, 
-                    'filterWidgetOptions'=>[
-                        'pluginOptions'=>['allowClear'=>true],
-                    ],
-                    'filterInputOptions'=>['placeholder'=>'Any type'], 
-                ],
-                // 'coords_in_parent',
-                // 'map_image',
+            // 'notes',
+            // 'img',
+            // 'poll_rate',
 
             ['class' => 'kartik\grid\ActionColumn'],
         ],

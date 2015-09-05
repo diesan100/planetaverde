@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             Manage areas
                         </p>
                         <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Go to Areas <i class='fa fa-chevron-right'></i>", Url::to(['/planes/plan/index']), ["class"=>"btn btn-orange"]);?>
+                            <?= yii\helpers\Html::a("Go to Areas <i class='fa fa-chevron-right'></i>", Url::to(['/destinations/area/index']), ["class"=>"btn btn-orange"]);?>
                         </p>
                     </div>
                 </div>
@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             Manage lodges
                         </p>
                         <p style="text-align: right;">
-                            <?= yii\helpers\Html::a("Go to Lodges <i class='fa fa-chevron-right'></i>", Url::to(['/billing/site/index']), ["class"=>"btn btn-orange"]);?>
+                            <?= yii\helpers\Html::a("Go to Lodges <i class='fa fa-chevron-right'></i>", Url::to(['/destinations/lodge/index']), ["class"=>"btn btn-orange"]);?>
                         </p>
                     </div>
                 </div>

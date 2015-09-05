@@ -46,10 +46,7 @@ use yii\helpers\ArrayHelper;
                         112,160
                     </i>             
                 </p>
-                
-                <div class="form-group">
-                    <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-                </div>
+
             </div>
         </div>
         
@@ -61,7 +58,7 @@ use yii\helpers\ArrayHelper;
         
         <div class="panel panel-white">
             <div class="panel-heading border-dark">
-		<h4 class="panel-title">Publishing parameters</h4>
+		<h4 class="panel-title">Publishing parameters</h4> <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary pull-right']) ?>
             </div>
             <div class="panel-body">
                 <?php 

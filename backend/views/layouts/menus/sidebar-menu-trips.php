@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 ?>
 <li <?= (Yii::$app->controller->id === "site")? "class='active'": ""; ?>><a href="<?=Url::to(['//settings/site/index'])?>"><i class="fa fa-home"></i> <span
-							class="title"> Inicio </span></a></li>
+							class="title"> Start </span></a></li>
                                                         
 <!-- APP SETTINGS -->
 <li <?= (Yii::$app->controller->id === "settings")? "class='active open'": ""; ?>>
