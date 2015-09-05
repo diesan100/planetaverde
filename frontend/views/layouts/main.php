@@ -56,7 +56,7 @@ AppAsset::register($this);
     <ul class="login">
         <li><a href="#"><img src="<?=Yii::getAlias("@web")?>/images/carro.png" alt="" /></a></li>
         <li><a href="#" class="oddz"><input type="text" placeholder="search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'search'" /><img src="<?=Yii::getAlias("@web")?>/images/search.png" alt="" /></a></li>
-        <li><a href="<?= backend\modules\settings\models\Settings::getParamValue("", "");?> "><img src="<?=Yii::getAlias("@web")?>/images/facebook.png" alt="" /></a></li>
+        <li><a target="blank" href="<?= backend\modules\settings\models\Settings::getParamValue("front-page", "facebook-link");?> "><img src="<?=Yii::getAlias("@web")?>/images/facebook.png" alt="" /></a></li>
         
         <li>
             <?php 
