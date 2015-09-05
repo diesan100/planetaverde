@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="settings-index">
 
     <p>
-        <?= Html::a(Yii::t('app', 'Nuevo parámetro'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'New Parameter'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             [
                 'width' => '15%',
-                'label'=>'Grupo',
+                'label'=>'Group',
                 'attribute'=>'group_name',
                 /*'value'=>function ($model, $key, $index, $widget) {
                     $user = User::findOne(["id"=>$model->owner]);
@@ -36,18 +36,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 },*/
                 'filterType'=>GridView::FILTER_SELECT2,
-                'filterInputOptions'=>['placeholder'=>'Cualquiera'],
+                'filterInputOptions'=>['placeholder'=>'Any'],
                 'filter'=>  yii\helpers\ArrayHelper::map(Settings::getDisctinctGroups(), 'group_name', 'group_name'), 
             ],
             [
                 'attribute'=>'param_name',
-                'label'=>'Nombre',
+                'label'=>'Name',
             ],
             
             'description',
             [
                 'attribute'=>'param_type',
-                'label'=>'Tipo',
+                'label'=>'Type',
                 'value'=>function ($model, $key, $index, $widget) {
                     if($model->param_type == SettingsModule::TYPE_BOOLEAN) {
                         return "Si/No";
@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute'=>'param_int_value',
-                'label'=>'Valor del parámetro',
+                'label'=>'Param Value',
                 'value'=>function ($model, $key, $index, $widget) {
                     if($model->param_type == SettingsModule::TYPE_BOOLEAN || $model->param_type == SettingsModule::TYPE_INTEGER) {
                         return $model->param_int_value;

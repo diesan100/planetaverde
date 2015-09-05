@@ -46,18 +46,18 @@ class Settings extends \yii\db\ActiveRecord
      */
     public function attributeLabels()
     {
-        return [
-            'group_name' => Yii::t('app', 'Grupo'),
-            'param_name' => Yii::t('app', 'Nombre de parámetro'),
-            'param_type' => Yii::t('app', 'Tipo de parámetro'),
-            'param_int_value' => Yii::t('app', 'Valor entero'),
-            'param_varchar_value' => Yii::t('app', 'Valor texto'),
-            'param_long_value' => Yii::t('app', 'Valor texto largo'),
-            'description' => Yii::t('app', 'Descripción'),
-        ];
-        
         /*
-         * return [
+        return [
+            'group_name' => Yii::t('app', 'Group'),
+            'param_name' => Yii::t('app', 'Name'),
+            'param_type' => Yii::t('app', 'Type'),
+            'param_int_value' => Yii::t('app', 'Int Value'),
+            'param_varchar_value' => Yii::t('app', 'Text Value'),
+            'param_long_value' => Yii::t('app', 'Long Text Value'),
+            'description' => Yii::t('app', 'Description'),
+        ];*/
+        
+        return [
             'group_name' => Yii::t('app', 'Group Name'),
             'param_name' => Yii::t('app', 'Param Name'),
             'param_type' => Yii::t('app', 'Param Type'),
@@ -66,7 +66,7 @@ class Settings extends \yii\db\ActiveRecord
             'param_long_value' => Yii::t('app', 'Param Long Value'),
             'description' => Yii::t('app', 'Description'),
         ];
-         */
+        
     }
     
     public function getValue() {
