@@ -74,7 +74,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         
-        var_dump($model);
+        //var_dump($model);
         
         $logger =         \common\utils\MyLogger::getInstance("login.log");
         
@@ -92,7 +92,7 @@ class SiteController extends Controller
                 $logger->logInfo("this->redirect(['/site/index']");
                 return $this->redirect('index');
             } else {
-                var_dump("1");
+                //var_dump("1");
                 return $this->render('login', [
                     'model' => $model,
                 ]);

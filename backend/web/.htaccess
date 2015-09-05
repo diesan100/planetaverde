@@ -2,7 +2,7 @@
 
 RewriteEngine on
 
-RewriteBase /myprojectt/backend/web
+RewriteBase /planetaverde/backend/web
 
 # if a directory or a file exists, use it directly
 RewriteCond %{REQUEST_FILENAME} !-f
