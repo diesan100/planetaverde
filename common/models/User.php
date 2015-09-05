@@ -8,8 +8,6 @@ use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
 use \yii\db\BaseActiveRecord;
 use yii\db\Expression;
-use \common\models\Project;
-use \backend\modules\settings\models\Settings;
 
 /**
  * User model
