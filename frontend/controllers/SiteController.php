@@ -1,4 +1,5 @@
 <?php
+
 namespace frontend\controllers;
 
 use Yii;
@@ -21,31 +22,30 @@ use common\modules\cms\models\CmsMenuItem;
 /**
  * Site controller
  */
-class SiteController extends Controller
-{
+class SiteController extends Controller {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         return [/*
-            'access' => [
-                
-                'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
-                'rules' => [
-                    [
-                        'actions' => ['signup'],
-                        'allow' => true,
-                        'roles' => ['?'],
-                    ],
-                    [
-                        'actions' => ['logout'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],*/
+              'access' => [
+
+              'class' => AccessControl::className(),
+              'only' => ['logout', 'signup'],
+              'rules' => [
+              [
+              'actions' => ['signup'],
+              'allow' => true,
+              'roles' => ['?'],
+              ],
+              [
+              'actions' => ['logout'],
+              'allow' => true,
+              'roles' => ['@'],
+              ],
+              ],
+              ], */
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
@@ -58,8 +58,7 @@ class SiteController extends Controller
     /**
      * @inheritdoc
      */
-    public function actions()
-    {
+    public function actions() {
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
@@ -75,18 +74,18 @@ class SiteController extends Controller
      * Shows a category´s post list
      * @param type $category
      */
-    public function actionCategory($category=NULL) {
+    public function actionCategory($category = NULL) {
         
     }
-    
+
     /**
      * Shows a post
      * @param type $post
      */
-    public function actionPost($post=NULL) {
+    public function actionPost($post = NULL) {
         
     }
-    
+
     /**
      * Shows a CMS page
      * 
@@ -95,12 +94,12 @@ class SiteController extends Controller
      * @param type $id
      * @return type
      */
-    public function actionPage($itemParent=NULL, $itemTitle=NULL) {
-        
+    public function actionPage($itemParent = NULL, $itemTitle = NULL) {
+
         $logger = \common\utils\MyLogger::getInstance("cms.log");
         $logger->logInfo("actionPage!!!, itemTitle = " . $itemTitle . " itemParent = " . $itemParent);
-                
-                
+
+
         $this->view->params['parent_current_item'] = NULL;
         $this->view->params['current_item'] = NULL;
         $title = "No title";
@@ -108,78 +107,74 @@ class SiteController extends Controller
         // 1. Get page
         // If there is no page we search for the home page
         if (!isset($itemTitle) || $itemTitle == NULL) {
-            $page = CmsPage::findOne(['is_home'=>1]);
-           
+            $page = CmsPage::findOne(['is_home' => 1]);
+
             //throw new HttpException('404', Yii::t('app', "Vamos a la home porque no hay título de página"));
         } else {
             // Get page id by menu item title
             $itemTitle = str_replace("-", " ", $itemTitle);
             $this->view->params['current_item'] = $itemTitle;
-            
-            $menuItem = CmsMenuItem::findOne(['title'=>$itemTitle]);
-            
-            if(!isset($menuItem) || $menuItem == null) {
+
+            $menuItem = CmsMenuItem::findOne(['title' => $itemTitle]);
+
+            if (!isset($menuItem) || $menuItem == null) {
                 //$this -> render( 'error', array( 'error' => "CONTENT NOT FOUND" ) );
                 throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND__"));
             }
-            
+
             //$page = CmsPage::findOne(['is_home'=>1]);
-            $page = CmsPage::findOne(['id'=>$menuItem->PAGE]);
-            
-            if(!isset($page) || $page == null) {
+            $page = CmsPage::findOne(['id' => $menuItem->PAGE]);
+
+            if (!isset($page) || $page == null) {
                 throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND=="));
             }
-            
+
             // If there is parent item we pass it to the main layout to be treate within menu
             if (isset($itemParent) || $itemParent != NULL) {
-                $this->view->params['parent_current_item'] = $itemParent;    
+                $this->view->params['parent_current_item'] = $itemParent;
             }
         }
-        
-        if($page == null) {
+
+        if ($page == null) {
             throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND**"));
         } else {
 
             $title = $page->TITLE;
-            if($page->TYPE == CMSConstants::$CMS_PAGE_HOME) {
-                
+            if ($page->TYPE == CMSConstants::$CMS_PAGE_HOME) {
+
                 $this->view->title = $page->TITLE;
 
-                $post = CmsPostContent::findOne(['ID'=>$page->CONTENT_ID]);
+                $post = CmsPostContent::findOne(['ID' => $page->CONTENT_ID]);
 
-                if(isset($post)) {
+                if (isset($post)) {
                     $logger->logInfo("content = " . $post->ID);
-                    $content = $this->renderPartial("contentHome", ["content"=>$post->CONTENT, "title"=>$post->TITLE]);
+                    $content = $this->renderPartial("contentHome", ["content" => $post->CONTENT, "title" => $post->TITLE]);
                 } else {
                     throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND. Content Id = " . $page->ID));
                 }
 
                 $this->view->params['cms_page'] = $page;
-            
-            } else if($page->TYPE == CMSConstants::$CMS_PAGE_DESTINATION) {
+            } else if ($page->TYPE == CMSConstants::$CMS_PAGE_DESTINATION) {
                 
-                
-                
-            } else if($page->TYPE == CMSConstants::$CMS_PAGE_POST || $page->IS_HOME) {
+            } else if ($page->TYPE == CMSConstants::$CMS_PAGE_POST || $page->IS_HOME) {
 
                 $this->view->title = $page->TITLE;
 
-                $post = CmsPostContent::findOne(['ID'=>$page->CONTENT_ID]);
+                $post = CmsPostContent::findOne(['ID' => $page->CONTENT_ID]);
 
-                if(isset($post)) {
+                if (isset($post)) {
                     $logger->logInfo("content = " . $post->ID);
-                    $content = $this->renderPartial("contentPage", ["content"=>$post->CONTENT]);
+                    $content = $this->renderPartial("contentPage", ["content" => $post->CONTENT]);
                 } else {
                     throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND. Content Id = " . $page->ID));
                 }
 
                 $this->view->params['cms_page'] = $page;
-                
-                /*if($page->IS_HOME) {
-                    return $this->actionHome();
-                }*/
 
-            } else if($page->TYPE == CMSConstants::$FRONT_SIGNUP_PAGE) {
+                /* if($page->IS_HOME) {
+                  return $this->actionHome();
+                  } */
+            } else if ($page->TYPE == CMSConstants::$FRONT_SIGNUP_PAGE) {
 
                 $action_type = Yii::$app->request->post('action_type');
 
@@ -188,22 +183,17 @@ class SiteController extends Controller
                 } else {
                     return $this->actionSignup();
                 }
-
-
-            
             } else {
-                throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND++".$page->TYPE));
+                throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND++" . $page->TYPE));
             }
         }
-        
+
         return $this->render('index', array(
-                'content' => $content,
-                'title' => $title,
-            ));
-        
+                    'content' => $content,
+                    'title' => $title,
+        ));
     }
-    
-    
+
     /**
      * Students Login into e-campus
      * 
@@ -211,11 +201,10 @@ class SiteController extends Controller
      * failed sign in
      * @return type
      */
-    public function actionLogin($returnSignup = NULL)
-    {
+    public function actionLogin($returnSignup = NULL) {
         $this->view->params['parent_current_item'] = NULL;
         $this->view->params['current_item'] = NULL;
-        
+
         if (!\Yii::$app->user->isGuest) {
             return $this->goHome();
         }
@@ -224,14 +213,14 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->redirect(\yii\helpers\Url::to(["/user/idnex"]));
         } else {
-            if(isset($returnSignup) && $returnSignup) {
+            if (isset($returnSignup) && $returnSignup) {
                 return $this->render('signup', [
-                    'signup_model' => new SignupForm(),
-                    'model' => $model
+                            'signup_model' => new SignupForm(),
+                            'model' => $model
                 ]);
             } else {
                 return $this->render('login', [
-                    'model' => $model,
+                            'model' => $model,
                 ]);
             }
         }
@@ -243,43 +232,51 @@ class SiteController extends Controller
      * @return type
      */
     public function actionSignup($plan_id = null) {
-        
+
         // Si ya está logado, se redirige al usersbackend
         if (!Yii::$app->user->isGuest) {
-            $this->redirect(\yii\helpers\Url::to(["site/index"]));
+            //$this->redirect(\yii\helpers\Url::to(["site/index"]));
+            return $this->redirect("/planetaverde/frontend/web/");
         }
-        
+
         $this->view->params['parent_current_item'] = NULL;
         $this->view->params['current_item'] = NULL;
-        
         $model = new SignupForm();
         if ($model->load(Yii::$app->request->post())) {
+
             if ($user = $model->signup()) {
+                Yii::$app->mailer->compose()
+                        ->setFrom('demo.narola@gmail.com')
+                        ->setTo($user->email)
+                        ->setSubject('Planetaverde SignUP!!')
+                        ->setHtmlBody($_SERVER['DOCUMENT_ROOT'] . '<h1>Thank you for SignUP!!!</h1>')
+                        ->send();
                 if (Yii::$app->getUser()->login($user)) {
-                    if(Yii::$app->user->identity->membership->state == Membership::STATUS_SIGNING_UP_NOT_FREE) {
-                        return $this->redirect(Yii::getAlias("@usersbackend_web") ."/users/subscription/payment");
-                    } else {                    
-                        return $this->redirect(Yii::getAlias("@usersbackend_web") ."/projects/site/index?modal=new_proyect");
-                    }
+                    //  $this->redirect('/planetaverde/frontend/web/');
+                    return $this->redirect(Yii::getAlias("@usersbackend_web") . "/planetaverde/frontend/web/");
                 }
+                /* if (Yii::$app->getUser()->login($user)) {
+                  if (Yii::$app->user->identity->membership->state == Membership::STATUS_SIGNING_UP_NOT_FREE) {
+                  return $this->redirect(Yii::getAlias("@usersbackend_web") . "/users/subscription/payment");
+                  } else {
+                  return $this->redirect(Yii::getAlias("@usersbackend_web") . "/projects/site/index?modal=new_project");
+                  }
+                  } */
             }
         }
 
         return $this->render('signup', [
-            'title' => Yii::t('app','Signup'),
-            'signup_model' => $model,
-            'login_model' => new LoginForm()
+                    'title' => Yii::t('app', 'Signup'),
+                    'signup_model' => $model,
+                    'login_model' => new LoginForm()
         ]);
-        
-        
     }
-    
+
     /**
      * Logout
      * @return type
      */
-    public function actionLogout()
-    {
+    public function actionLogout() {
         Yii::$app->user->logout();
         return $this->goHome();
     }
@@ -289,8 +286,7 @@ class SiteController extends Controller
      * 
      * @return type
      */
-    public function actionContact()
-    {
+    public function actionContact() {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
@@ -302,7 +298,7 @@ class SiteController extends Controller
             return $this->refresh();
         } else {
             return $this->render('contact', [
-                'model' => $model,
+                        'model' => $model,
             ]);
         }
     }
@@ -312,8 +308,7 @@ class SiteController extends Controller
      * 
      * @return type
      */
-    public function actionRequestPasswordReset()
-    {
+    public function actionRequestPasswordReset() {
         $model = new PasswordResetRequestForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             if ($model->sendEmail()) {
@@ -326,7 +321,7 @@ class SiteController extends Controller
         }
 
         return $this->render('requestPasswordResetToken', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
 
@@ -337,8 +332,7 @@ class SiteController extends Controller
      * @return type
      * @throws BadRequestHttpException
      */
-    public function actionResetPassword($token)
-    {
+    public function actionResetPassword($token) {
         try {
             $model = new ResetPasswordForm($token);
         } catch (InvalidParamException $e) {
@@ -352,45 +346,40 @@ class SiteController extends Controller
         }
 
         return $this->render('resetPassword', [
-            'model' => $model,
+                    'model' => $model,
         ]);
     }
-    
-    
+
     /**
      * Obsolet code, just redirection
      * 
      * @return type
      */
-    public function actionIndex(/*$page=NULL*/)
-    {
-        return $this->redirect('site/page',1);
+    public function actionIndex(/* $page=NULL */) {
+        return $this->redirect('site/page', 1);
     }
-    
+
     /**
      * Customized error
      * 
      * @return type
      */
-    public function actionCustomerror()
-    {
+    public function actionCustomerror() {
         $exception = Yii::$app->errorHandler->exception;
         if ($exception !== null) {
             return $this->render('error', ['exception' => $exception, 'texto' => "texto"]);
         }
     }
-    
+
     /*
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
-    */
-    
-    public function actionHome()
-    {
+      public function actionAbout()
+      {
+      return $this->render('about');
+      }
+     */
+
+    public function actionHome() {
         return $this->render('home');
     }
 
-    
 }

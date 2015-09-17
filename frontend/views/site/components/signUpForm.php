@@ -16,7 +16,7 @@ $form = \yii\widgets\ActiveForm::begin(['id' => 'form-signup']); ?>
         </div>
         <div class="form-group">
                 <span class="input-icon">
-                        <input typeemail" class="form-control" name="SignupForm[email]" placeholder="Email" id="signupform-email">
+                        <input typeemail class="form-control" name="SignupForm[email]" placeholder="Email" id="signupform-email">
                         <i class="fa fa-envelope"></i> </span>
         </div>
         <div class="form-group">

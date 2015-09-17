@@ -33,7 +33,7 @@ class SignupForm extends Model
             ['email', 'email'],
             ['email', 'unique', 'targetClass' => '\common\models\User', 'message' => Yii::t('app', 'This email address is not available.')],
             [['email','password', 'password_repeat'], 'required'],
-            ['password', 'string', 'min' => 6],
+            ['password', 'string', 'min' => 1],
             [['password_repeat'], 'compare', 'compareAttribute' => 'password'],
             [['password'],'safe'],
         ];
@@ -70,7 +70,6 @@ class SignupForm extends Model
             $user->setPassword($this->password);
             $user->generateAuthKey();
             if ($user->save()) {
-                
                 return $user;
             }
         }
