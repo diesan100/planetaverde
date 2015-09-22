@@ -97,10 +97,15 @@ class DestinationsController extends Controller
 
             $this->view->params['cms_page'] = $page;
         }
-        
+        $areaListing = \backend\modules\destinations\models\Area::findAll(["parent"=>1]);         
         //$content = $this->renderPartial("contentHome", ["content"=>$post->CONTENT, "title"=>$post->TITLE]);
         
-        return $this->render("contentArea", ["content"=>$post->CONTENT, "title"=>$post->TITLE, 'area'=>$area]);
+        return $this->render("contentArea", [
+                                            "content"=>$post->CONTENT, 
+                                            "title"=>$post->TITLE, 
+                                            'area'=>$area,
+                                            'areaListing'=>$areaListing,
+                                ]);
         
         //return $this->redirect('site/page',1);
     }

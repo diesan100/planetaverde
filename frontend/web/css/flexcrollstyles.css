@@ -1,7 +1,7 @@
 /* Scroll Bar Master Styling Starts Here */
 /* All comments can be freely removed from the css */
 
-.scrollwrapper,.mcontentwrapper { height:55vh !important;}
+.mcontentwrapper { height:35vh !important;}
 .scrollgeneric {
 line-height: 1px;
 font-size: 1px;

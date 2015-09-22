@@ -99,7 +99,6 @@ class SiteController extends Controller {
         $logger = \common\utils\MyLogger::getInstance("cms.log");
         $logger->logInfo("actionPage!!!, itemTitle = " . $itemTitle . " itemParent = " . $itemParent);
 
-
         $this->view->params['parent_current_item'] = NULL;
         $this->view->params['current_item'] = NULL;
         $title = "No title";
@@ -110,7 +109,7 @@ class SiteController extends Controller {
             $page = CmsPage::findOne(['is_home' => 1]);
 
             //throw new HttpException('404', Yii::t('app', "Vamos a la home porque no hay título de página"));
-        } else {
+        } else {            
             // Get page id by menu item title
             $itemTitle = str_replace("-", " ", $itemTitle);
             $this->view->params['current_item'] = $itemTitle;
@@ -138,17 +137,17 @@ class SiteController extends Controller {
         if ($page == null) {
             throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND**"));
         } else {
-
+            
             $title = $page->TITLE;
             if ($page->TYPE == CMSConstants::$CMS_PAGE_HOME) {
-
                 $this->view->title = $page->TITLE;
 
                 $post = CmsPostContent::findOne(['ID' => $page->CONTENT_ID]);
-
+                $area = \backend\modules\destinations\models\Area::findOne([\backend\modules\settings\models\Settings::getParamValue("areas-settings", "area-worldmap-id", 1)]);
+                
                 if (isset($post)) {
                     $logger->logInfo("content = " . $post->ID);
-                    $content = $this->renderPartial("contentHome", ["content" => $post->CONTENT, "title" => $post->TITLE]);
+                    $content = $this->renderPartial("contentHome", ["content" => $post->CONTENT, "title" => $post->TITLE, "area" => $area]);
                 } else {
                     throw new HttpException('404', Yii::t('app', "CONTENT NOT FOUND. Content Id = " . $page->ID));
                 }
