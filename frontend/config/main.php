@@ -32,7 +32,8 @@ return [
                'logout' => 'site/logout',
                'login' => 'site/login',
                'Destinations' => 'destinations/index',
-               'Destinations/<areaName>' => 'destinations/index',
+//               'Destinations/<areaName>' => 'destinations/index',
+               'Destinations/<areaName:[\w\/.-]+>' => 'destinations/index',
                
                '<itemGrandParent>/<itemParent>/<itemTitle>' => 'site/page',
                '<itemParent>/<itemTitle>' => 'site/page',

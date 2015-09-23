@@ -17,4 +17,5 @@ class PVConstants {
     	public static $AREA_TYPES = ['0' => 'Branch', '1' => 'Leaf'] ;
         public static $AREA_TYPE_BRANCH = 0;
         public static $AREA_TYPE_LEAF = 1;
+    	public static $AREA_FEATURED = ['0' => 'Disabled', '1' => 'Enabled'] ;
 }

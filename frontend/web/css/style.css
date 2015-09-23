@@ -18,7 +18,9 @@ body, html { width:100%; height:100%;}
 .spoggle { position:fixed; right:0px; z-index:9; height:75vh; bottom:0; width:400px; background:rgba(231,233,232,0.9);}
 .spoggle .softArrow img { margin-left:0; position:relative; z-index:99;} .mapBox { position:relative;} .softArrow { position:absolute; left:0; top:0;}
 .contentBox { height: 265px; margin: 5% 3% 7% 7%;} .mapthis { width:100%;}
-h1, .heading1 { font-size:26px; color:#333; margin-bottom:12px; font-weight:bold;line-height: 26px;}
+h1, .heading1 { font-size:26px; color:#333; margin-bottom:18px; font-weight:bold;line-height: 26px;}
+.contentBox .flexcroll h2 {color:#333; margin-bottom:12px; font-weight:bold;}
+.contentBox .flexcroll hr { background: #333 none repeat scroll 0 0;color: #333;height: 1.5px;margin-bottom: 12px;margin-left: 22px;width: 85%;}
 h4, .heading4, .contentBox p { font-size:16px; color:#333;}
 .highlight { display:block !important; width:0;} .spogglez { display:block;}
 .highlight .softArrow img { margin-left:-30px;} 
@@ -427,4 +429,25 @@ and (max-width : 1380px) {
 
 .navigation:hover{
     z-index: 99;
+}
+
+.breadcrumbs_custom{
+    position: absolute;
+    top: 155px;
+    width: 100%;
+    z-index: 9999;
+}
+
+.breadcrumbs_custom .breadcrumb a, .breadcrumbs_custom .breadcrumb a:hover{
+    color: #fff;
+   
+}
+.breadcrumbs_custom .breadcrumb {
+     background-color: transparent;
+     text-align: right;
+     
+}
+
+.breadcrumbs_custom .breadcrumb li.active a{
+     text-decoration: none;
 }

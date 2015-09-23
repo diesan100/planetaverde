@@ -48,7 +48,7 @@ class MappedImageMapWidget extends \yii\bootstrap\Widget {
             $mappingTag = '<map name="Map" id="Map">';
             foreach ($childrenArea as $childArea) {
                 if($childArea->coords_in_parent != null && $childArea->coords_in_parent != "") {
-                    $mappingTag .= '<area alt="'.$childArea->name.'" title="" href="'.$childArea->getUrl().'" shape="poly" coords="'.$childArea->coords_in_parent.'" />';
+                    $mappingTag .= '<area alt="'.$childArea->name.'" title="'.$childArea->name.'" href="'.$childArea->getUrl().'" shape="poly" coords="'.$childArea->coords_in_parent.'" />';
                 }
             }
             $mappingTag .= '</map>'; 

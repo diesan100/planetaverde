@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'type',
             'coords_in_parent',
             'map_image',
+            'featured',
         ],
     ]) ?>
 

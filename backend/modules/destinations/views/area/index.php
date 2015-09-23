@@ -67,6 +67,18 @@ $this->params['breadcrumbs'][] = $this->title;
                     ],
                     'filterInputOptions'=>['placeholder'=>'Any type'], 
                 ],
+                ['attribute'=>'featured',
+                    'value'=>function ($model, $key, $index, $widget) {
+                        return PVConstants::$AREA_FEATURED[$model->featured];
+                    },
+                    'width'=>'10%', 
+                    'filterType'=>GridView::FILTER_SELECT2,
+                    'filter'=>  PVConstants::$AREA_FEATURED, 
+                    'filterWidgetOptions'=>[
+                        'pluginOptions'=>['allowClear'=>true],
+                    ],
+                    'filterInputOptions'=>['placeholder'=>'Any type'], 
+                ],
                 // 'coords_in_parent',
                 // 'map_image',
 

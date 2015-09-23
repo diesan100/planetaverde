@@ -32,11 +32,11 @@ class Area extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parent', 'state', 'type', 'map_image'], 'integer'],
+            [['parent', 'state', 'type', 'map_image', 'featured'], 'integer'],
             [['name'], 'required'],
             [['name'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 1200],
-            [['coords_in_parent'], 'string', 'max' => 2000]
+            [['coords_in_parent'], 'string', 'max' => 2000],
         ];
     }
 
@@ -54,6 +54,7 @@ class Area extends \yii\db\ActiveRecord
             'type' => Yii::t('app', 'Type'),
             'coords_in_parent' => Yii::t('app', 'Coords In Parent'),
             'map_image' => Yii::t('app', 'Map Image'),
+            'featured' => Yii::t('app', 'Featured'),
         ];
     }
     

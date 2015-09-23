@@ -18,7 +18,7 @@ class AreaSearch extends Area
     public function rules()
     {
         return [
-            [['id', 'parent', 'state', 'type', 'map_image'], 'integer'],
+            [['id', 'parent', 'state', 'type', 'map_image', 'featured'], 'integer'],
             [['name', 'description', 'coords_in_parent'], 'safe'],
         ];
     }
@@ -61,6 +61,7 @@ class AreaSearch extends Area
             'state' => $this->state,
             'type' => $this->type,
             'map_image' => $this->map_image,
+            'featured' => $this->featured,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

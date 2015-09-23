@@ -25,6 +25,8 @@ use yii\helpers\ArrayHelper;
                 <?= $form->field($model, 'name')->textInput(['maxlength' => 255]) ?>
 
                 <?= $form->field($model, 'description')->textarea(['maxlength' => 1200, 'rows' => 8]) ?>
+                
+                <?= $form->field($model, 'featured')->checkbox(['class'=>'cbr']) ?>
 
                 <?= $form->field($model, 'coords_in_parent')->textarea(['maxlength' => 2000, 'rows' => 8]) ?>
 
