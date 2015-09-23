@@ -35,6 +35,14 @@ $(document).ready(function ($) {
                 $(this).next().removeClass("result_hover");
             }
     );
+    $(".smallnavi").hover(
+            function () {
+                $(this).addClass("result_hover");
+            },
+            function () {
+                $(this).removeClass("result_hover");
+            }
+    );
     $('#form-signup').submit(function () {
         if ($('#signupform-password_repeat').val() == $('#signupform-password').val()) {
             $('#error_signup').html('');

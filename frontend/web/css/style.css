@@ -17,8 +17,8 @@ body, html { width:100%; height:100%;}
 
 .spoggle { position:fixed; right:0px; z-index:9; height:75vh; bottom:0; width:400px; background:rgba(231,233,232,0.9);}
 .spoggle .softArrow img { margin-left:0; position:relative; z-index:99;} .mapBox { position:relative;} .softArrow { position:absolute; left:0; top:0;}
-.contentBox { height: 265px; margin: 7%;} .mapthis { width:100%;}
-h1, .heading1 { font-size:26px; color:#333; margin-bottom:18px; font-weight:bold;}
+.contentBox { height: 265px; margin: 5% 3% 7% 7%;} .mapthis { width:100%;}
+h1, .heading1 { font-size:26px; color:#333; margin-bottom:12px; font-weight:bold;line-height: 26px;}
 h4, .heading4, .contentBox p { font-size:16px; color:#333;}
 .highlight { display:block !important; width:0;} .spogglez { display:block;}
 .highlight .softArrow img { margin-left:-30px;} 
@@ -325,9 +325,9 @@ and (max-width : 1380px) {
 
 .greeno .hozo.k-input { color:#6e904d !important;}
 .greeno .hozo .k-select .k-icon { background-image:url("../images/sprite2.png") !important;}
-
-.smallnavi { transition: opacity 0.5s ease-in; opacity:0; display:inline-block;visibility: hidden;}
-.result_hover.smallnavi { display:inline-block !important; opacity:1; visibility: visible;}
+.mcontentwrapper { height:35vh !important;}
+.smallnavi { transition: opacity 0.5s ease-in; opacity:0;display: inline-block;visibility: hidden;margin-left: -3px;padding-left: 3px;}
+.result_hover.smallnavi { display:inline-block !important; opacity:1;visibility: visible;}
 
 .navismall a {
     background: #6e904c !important; padding:0;
