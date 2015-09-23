@@ -27,12 +27,12 @@ $(document).ready(function ($) {
     $('.c-menu__items > li').on('click', function () {
         $(this).addClass('active').siblings().removeClass('active');
     });
-    $(".menusub").hover(
+    $(".menusub a").hover(
             function () {
-                $(this).addClass("result_hover");
+                $(this).next().addClass("result_hover");
             },
             function () {
-                $(this).removeClass("result_hover");
+                $(this).next().removeClass("result_hover");
             }
     );
     $('#form-signup').submit(function () {

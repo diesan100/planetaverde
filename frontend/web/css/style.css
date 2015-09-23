@@ -326,8 +326,8 @@ and (max-width : 1380px) {
 .greeno .hozo.k-input { color:#6e904d !important;}
 .greeno .hozo .k-select .k-icon { background-image:url("../images/sprite2.png") !important;}
 
-.smallnavi { transition: opacity 0.5s ease-in; opacity:0; display:inline-block;}
-.result_hover .smallnavi { display:inline-block !important; opacity:1;}
+.smallnavi { transition: opacity 0.5s ease-in; opacity:0; display:inline-block;visibility: hidden;}
+.result_hover.smallnavi { display:inline-block !important; opacity:1; visibility: visible;}
 
 .navismall a {
     background: #6e904c !important; padding:0;
