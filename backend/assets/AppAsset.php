@@ -67,7 +67,7 @@ class AppAsset extends AssetBundle
         //'rapido/assets/plugins/moment/min/moment.min.js',
         'rapido/assets/plugins/perfect-scrollbar/src/jquery.mousewheel.js',
         'rapido/assets/plugins/perfect-scrollbar/src/perfect-scrollbar.js',
-        'rapido/assets/plugins/bootbox/bootbox.min.js',
+        'rapido/assets/plugins/bootbox/bootbox.js',
         'rapido/assets/plugins/jquery.scrollTo/jquery.scrollTo.min.js',
         'rapido/assets/plugins/ScrollToFixed/jquery-scrolltofixed-min.js',
         'rapido/assets/plugins/jquery.appear/jquery.appear.js',

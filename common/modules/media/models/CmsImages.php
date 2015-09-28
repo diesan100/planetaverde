@@ -78,7 +78,7 @@ class CmsImages extends \yii\db\ActiveRecord
    
    public static function getImageTag($id, $params=null) {
        $image = CmsImages::findOne($id);
-       $url = Yii::getAlias(Yii::getAlias("@frontend_web")) . "/" . $image->URL;
+       $url = Yii::getAlias("@frontend_web") . "/" . $image->URL;
        $params_string = "";
        if(isset($params)) {
            

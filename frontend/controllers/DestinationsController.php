@@ -5,12 +5,11 @@ use Yii;
 
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use common\modules\cms\models\CmsPage;
 use common\modules\cms\constants\CMSConstants;
 use common\modules\cms\models\CmsPostContent;
 use \yii\web\HttpException;
 use backend\modules\destinations\models\Area;
-
+use backend\modules\destinations\models\Lodge;
 
 /**
  * Site controller
@@ -138,12 +137,17 @@ class DestinationsController extends Controller
    	 * Renders destination area
    	 * @param integer $area_id
    	 */
-	public function actionIndex($area_id = null)
-	{		
-		if(!isset($area_id)) 
-			$area_id = \backend\modules\settings\models\Settings::getParamValue("areas-settings", "area-worldmap-id", 1); // get world map id
-		
-		$area = Area::findOne($area_id);
+	public function actionIndex($area_name = null)
+	{
+		$area = null;
+		if(!isset($area_name)) 
+		{
+			$area_id = \backend\modules\settings\models\Settings::getParamValue("areas-settings", "area-worldmap-id", 1); // get world map id 
+			$area = Area::findOne($area_id);
+		}
+		else {
+			$area = Area::findOne(['name'=>$area_name]);
+		}
 		if($area == null)
 		{
 			throw new HttpException('404', Yii::t('app', "AREA NOT FOUND"));
@@ -152,14 +156,49 @@ class DestinationsController extends Controller
 		
 		$this->view->params['parent_current_item'] = "Destinations";
 		$this->view->params['current_item'] = $area->name;
+
+		if(isset($_GET['pid'])) 
+		{
+			$ptype = $_GET['ptype']; // page type
+			$pid = $_GET['pid'];
+			if ($ptype == 'news') {  // renders news page
+				$post = CmsPostContent::findOne([$pid]);
+				if($post)
+				{
+					return $this->render("contentPost", [
+						'area'=>$area,	
+						'post'=>$post,
+					]);
+				}
+			}
+			else if($ptype == 'gt')
+			{
+				
+			}
+			else if($ptype == 'lodge')
+			{
+				$lodge = Lodge::findOne([$pid]);
+				if($lodge)
+				{
+					return $this->render("contentLodge", [
+						'area'=>$area,
+						'lodge'=>$lodge,
+						'feedbacks'=>$lodge->feedbacks,
+					]);
+				}
+			}
+		}
 		
+		// render area page
 		$areaListing = Area::findAll(["parent"=>$area->id,"featured"=>1]);
-		
+			
 		return $this->render("contentArea", [
 				'area'=>$area,
 				'areaListing'=>$areaListing,
 				'news'=>$area->getNews(),
+				'trips'=>null,
 				'lodges'=>$area->lodges,
+				'feedbacks'=>null,
 		]);
 	}
     

@@ -75,7 +75,7 @@ class Area extends \yii\db\ActiveRecord
     
     public function getLodges()
     {
-    	return $this->hasMany(Lodge::className(), ['area_id'=>'id']);
+    	return $this->hasMany(Lodge::className(), ['area_id'=>'id'])->where('STATE=1');
     }
     
     public function getParent()
@@ -93,7 +93,7 @@ class Area extends \yii\db\ActiveRecord
     
     public function getUrl() {
         //return $this->name;
-        return yii::$app->request->baseUrl. '/Destinations/'. $this->id;
+        return yii::$app->request->baseUrl. '/Destinations/'. $this->name;
     }
     
     /**
@@ -129,6 +129,7 @@ class Area extends \yii\db\ActiveRecord
     		array_push($route, ['id'=>$p->id, 'name'=>$p->name]);
     		$p = $p->getParent();
     	}
+    	array_pop($route);
     	if($reverse_order)
     		return $route;
     	else 

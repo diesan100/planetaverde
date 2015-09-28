@@ -57,7 +57,6 @@ use common\modules\cms\constants\CMSConstants;
             </div>
         </div>
         
-
         <?= \common\modules\media\widgets\MediaSelectorModalWidget::widget(); ?>
         <?= \common\modules\media\widgets\MediaSelectorWidget::widget(["model"=>$model, "field"=>"img", "bootstrap_cols"=>"4"]); ?>
         

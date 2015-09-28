@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                     'attribute'=>'area_id',
                     'value'=>function ($model, $key, $index, $widget) {
-                        $area = \backend\modules\destinations\models\Area::findOne(["id"=>$model->area]);
+                        $area = \backend\modules\destinations\models\Area::findOne(["id"=>$model->area_id]);
                         if(isset($area) && $area != NULL) {
                             return $area->name;
                         } else {

@@ -4,6 +4,7 @@ namespace backend\modules\destinations\models;
 
 use Yii;
 use backend\modules\destinations\models\Area;
+use backend\modules\destinations\models\Feedback;
 /**
  * This is the model class for table "lodge".
  *
@@ -17,6 +18,7 @@ use backend\modules\destinations\models\Area;
  * @property string $poll_rate
  * 
  * @property Area $area
+ * @property Feedback[] $feedbacks;
  */
 class Lodge extends \yii\db\ActiveRecord
 {
@@ -63,5 +65,9 @@ class Lodge extends \yii\db\ActiveRecord
     public function getArea()
     {
     	return $this->hasOne(Area::className(), ['id'=>'area_id']);
+    }
+    
+    public function getFeedbacks() {
+    	return $this->hasMany(Feedback::className(), ['loid'=>'id'])->where('lotype=1');
     }
 }
