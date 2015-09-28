@@ -1,8 +1,12 @@
 <?php
 $this->title = 'Destination';
 
-
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url' => ['index']];
+$route = $area->getAreaRoute(false);
+foreach ($route as $r)
+{
+	array_push($this->params['breadcrumbs'], ['label'=>$r['name'], 'url'=> $r['id']]);
+}
 ?>
 <div class="container breadcrumbs_custom">
     <div class="row">
@@ -20,6 +24,12 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
     <a class="softArrow" href="#">
         <img src="<?= Yii::getAlias("@web") ?>/images/softArrowRight.png" alt="" />
     </a>
+     <ul class="sub_navigation">
+        <li><a href="javascript:showAreaInfo('info')">Information</a></li>
+        <li><a href="javascript:showAreaInfo('news')"">News</a></li>
+        <li><a href="javascript:showAreaInfo('gt')"">Group Trips</a></li>
+        <li><a href="javascript:showAreaInfo('feedback')"">Feedback</a></li>
+    </ul>
     <div class="spogglez"> 
         <div class="mapBox">
             <!--<a href="#">-->
@@ -43,7 +53,28 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
                         </li>
                     <?php endforeach; ?>
                 </ul>
+                <div class="content content-info" style="display: none">
+                	<h1>About <?=$area->name?></h1>
+                	<?php echo $area->description ?>
+                </div>
+                <div class="content content-news" style="display: none">
+                <?php foreach ($news as $t): ?>
+                	<h2><?=$t->TITLE?></h2>
+                	<p><?=$t->CONTENT?></p>
+                <?php endforeach;?>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+function showAreaInfo(param)
+{
+	$('.contentBox .content').hide();
+	if(param == 'info')
+		$('.content.content-info').show();
+	else if(param == 'news')
+		$('.content.content-news').show();
+}
+</script>

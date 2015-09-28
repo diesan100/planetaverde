@@ -9,6 +9,7 @@ use common\modules\cms\models\CmsPage;
 use common\modules\cms\constants\CMSConstants;
 use common\modules\cms\models\CmsPostContent;
 use \yii\web\HttpException;
+use backend\modules\destinations\models\Area;
 
 
 /**
@@ -73,7 +74,7 @@ class DestinationsController extends Controller
      * 
      * @return type
      */
-    public function actionIndex($area=NULL)
+    public function actionIndex2($area=NULL)
     {
         $content = "";
         $title = "";
@@ -84,8 +85,7 @@ class DestinationsController extends Controller
             $areaName = $_GET['areaName'];
         }
         
-        if(!isset($area) || $area == null) {
-            
+        if(!isset($area) || $area == null) { // If area is NULL, get world map,
             $area = \backend\modules\destinations\models\Area::findOne([\backend\modules\settings\models\Settings::getParamValue("areas-settings", "area-worldmap-id", 1)]);
                         
             $page = CmsPage::findOne(["TYPE"=>  CMSConstants::$CMS_PAGE_HOME , "STATE"=>  CMSConstants::$CMS_CONTENT_STATE_PUBLISHED]);
@@ -134,7 +134,32 @@ class DestinationsController extends Controller
         //return $this->redirect('site/page',1);
     }
     
-   
-
+   	/**
+   	 * Renders destination area
+   	 * @param integer $area_id
+   	 */
+	public function actionIndex($area_id = null)
+	{		
+		if(!isset($area_id)) 
+			$area_id = \backend\modules\settings\models\Settings::getParamValue("areas-settings", "area-worldmap-id", 1); // get world map id
+		
+		$area = Area::findOne($area_id);
+		if($area == null)
+		{
+			throw new HttpException('404', Yii::t('app', "AREA NOT FOUND"));
+			return;
+		}
+		
+		$this->view->params['parent_current_item'] = "Destinations";
+		$this->view->params['current_item'] = $area->name;
+		
+		$areaListing = Area::findAll(["parent"=>$area->id,"featured"=>1]);
+		
+		return $this->render("contentArea", [
+				'area'=>$area,
+				'areaListing'=>$areaListing,
+				'news'=>$area->getNews(),
+		]);
+	}
     
 }

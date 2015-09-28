@@ -12,6 +12,8 @@ use kartik\widgets\ActiveForm;
 use kartik\widgets\FileInput;
 use common\models\User;
 
+use backend\modules\destinations\models\Area;
+
 /* @var $this yii\web\View */
 /* @var $model app\models\CmsPostContent */
 /* @var $form yii\widgets\ActiveForm */
@@ -32,6 +34,10 @@ if(!$model->isNewRecord) {
         </div>
         <div class="panel-body">
             <?= $form->field($model, 'TITLE')->textInput(['maxlength' => 255]) ?>
+            <?php
+            	$dataAreas = ArrayHelper::map(Area::find()->asArray()->all(), 'id', 'name');
+            	echo $form->field($model, 'area_id')->dropDownList($dataAreas);
+            ?>
             <?= $form->field($model, 'PERMALINK')->textInput(['readonly' => true], ['maxlength' => 255]) ?>
             <?= $form->field($model, 'CONTENT')->widget(\yii\redactor\widgets\Redactor::className(), [
                 'clientOptions' => [
@@ -58,7 +64,7 @@ if(!$model->isNewRecord) {
     <div class="panel panel-orange">
         <div class="panel-heading border-dark">
             <h4 class="panel-title"><?= Yii::t("app", "Publishing")?></h4>
-            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Crear') : Yii::t('app', 'Actualizar'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         </div>
         <div class="panel-body panel-white">
             <?php 

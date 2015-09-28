@@ -90,7 +90,7 @@ class SiteController extends Controller
                 $logger->logInfo(Yii::$app->user->isGuest);
                 
                 $logger->logInfo("this->redirect(['/site/index']");
-                return $this->redirect('index');
+                return $this->redirect('site/index');
             } else {
                 //var_dump("1");
                 return $this->render('login', [

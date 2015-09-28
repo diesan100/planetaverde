@@ -3,6 +3,7 @@
 namespace backend\modules\destinations\models;
 
 use Yii;
+use common\modules\cms\models\CmsPostContent;
 
 /**
  * This is the model class for table "area".
@@ -15,6 +16,9 @@ use Yii;
  * @property integer $type
  * @property string $coords_in_parent
  * @property integer $map_image
+ * 
+ * @property Area[] $subAreas
+ * @property CmsPostContent[] $posts 
  */
 class Area extends \yii\db\ActiveRecord
 {
@@ -58,11 +62,70 @@ class Area extends \yii\db\ActiveRecord
         ];
     }
     
+    public function getSubAreas()
+    {
+    	return $this->hasMany(Area::className(), ['parent_id'=>'id']);
+    }
+    
+    public function getPosts()
+    {
+    	return $this->hasMany(CmsPostContent::className(), ['area_id'=>'id'])->where('STATE=1')->orderBy('LAST_MODIFIED');
+    }
+    
+    public function getParent()
+    {
+    	if($this->parent)
+    	{
+    		return Area::findOne($this->parent);
+    	}
+    	return null;
+    }
+    
     public function getChildren() {
         return AreaSearch::findAll(["parent"=>$this->id]);
     }
     
     public function getUrl() {
-        return $this->name;
+        //return $this->name;
+        return yii::$app->request->baseUrl. '/Destinations/'. $this->id;
+    }
+    
+    /**
+     * Returns array of news for the area
+     * @param boolean $onlyForMe = false  
+     * @return CmsPostContent[]
+     */
+    public function getNews($onlyForMe = false) {
+    	if($onlyForMe)
+    		return $this->posts;
+    	
+    	$news = [];
+    	$p = $this;
+    	while($p)
+    	{
+    		$news = array_merge($news, $p->posts);
+    		$p = $p->getParent();
+    	}
+    	return $news;
+    }
+    
+    /**
+     * 
+     * @param boolean $reverse_order
+     * @return array:
+     */
+    public function getAreaRoute($reverse_order = true)
+    {
+    	$route = [];
+    	$p = $this;
+    	while($p)
+    	{
+    		array_push($route, ['id'=>$p->id, 'name'=>$p->name]);
+    		$p = $p->getParent();
+    	}
+    	if($reverse_order)
+    		return $route;
+    	else 
+    		return array_reverse($route);
     }
 }

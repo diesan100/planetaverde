@@ -58,7 +58,7 @@ return [
             'enableAutoLogin' => true,
             'identityCookie' => [
                 'name' => '_backendUser', // unique for frontend
-                'path'=>'/planetaverde/backend/web/'  // correct path for the frontend app.
+                'path'=>'/planetback/'  // correct path for the frontend app.
             ]
         ],
         'session' => [
@@ -68,10 +68,10 @@ return [
                 'path'=>'/planetaverde/backend/web/'  //
             ],
         ],
-        'urlManager' => [
+       /* 'urlManager' => [
             'class' => 'yii\web\UrlManager',
             'enablePrettyUrl' => false,
-            'showScriptName' => false,
+            'showScriptName' => true,
             'enableStrictParsing' => false,
             'rules' => [
                //'site' => 'site/page',
@@ -83,7 +83,7 @@ return [
                //'site/page' => 'site/page',
             ],
             
-        ],
+        ],*/
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],

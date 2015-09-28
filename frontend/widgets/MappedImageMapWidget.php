@@ -28,7 +28,8 @@ class MappedImageMapWidget extends \yii\bootstrap\Widget {
     {
         // Get image tag
        $image = CmsImages::findOne($this->area->map_image);
-       $url = Yii::getAlias(Yii::getAlias("@frontend_web")) . "/" . $image->URL;
+       //$url = Yii::getAlias(Yii::getAlias("@frontend_web")) . "/" . $image->URL;
+       $url = Yii::$app->request->baseUrl. "/". $image->URL;
        $params_string = "";
        if(isset($this->params)) {
            
@@ -48,7 +49,8 @@ class MappedImageMapWidget extends \yii\bootstrap\Widget {
             $mappingTag = '<map name="Map" id="Map">';
             foreach ($childrenArea as $childArea) {
                 if($childArea->coords_in_parent != null && $childArea->coords_in_parent != "") {
-                    $mappingTag .= '<area alt="'.$childArea->name.'" title="'.$childArea->name.'" href="'.$childArea->getUrl().'" shape="poly" coords="'.$childArea->coords_in_parent.'" />';
+                    $mappingTag .= '<area alt="'.$childArea->name.'" title="'.$childArea->name.'" href="'.$childArea->getUrl()
+                    .'" shape="poly" coords="'.$childArea->coords_in_parent.'" />';
                 }
             }
             $mappingTag .= '</map>'; 

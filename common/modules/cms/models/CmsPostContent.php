@@ -20,6 +20,7 @@ use Yii;
  * @property string $TITLE
  * @property integer $FEATURED_IMG
  * @property string $META_DATA
+ * @property integer $area_id
  *
  * @property CmsPage[] $cmsPages
  * @property CmsCategory $cATEGORY
@@ -42,7 +43,7 @@ class CmsPostContent extends \yii\db\ActiveRecord
     {
         return [
             [['CONTENT'], 'string'],
-            [['STATE', 'OWNER', 'CATEGORY', 'VERSION_ID', 'FEATURED_IMG'], 'integer'],
+            [['STATE', 'OWNER', 'CATEGORY', 'VERSION_ID', 'FEATURED_IMG', 'area_id'], 'integer'],
             [['CREATION_DATE', 'LAST_MODIFIED', 'MODIFIED_BY'], 'safe'],
             [['PERMALINK', 'TITLE', 'META_DATA'], 'string', 'max' => 255]
         ];
@@ -55,6 +56,7 @@ class CmsPostContent extends \yii\db\ActiveRecord
     {
         return [
             'ID' => Yii::t('app', 'ID'),
+        	'area_id' => Yii::t('app', 'Area'),
             'CONTENT' => Yii::t('app', 'Content'),
             'STATE' => Yii::t('app', 'State'),
             'CREATION_DATE' => Yii::t('app', 'Creation  Date'),
