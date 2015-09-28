@@ -49,7 +49,7 @@ use common\modules\cms\constants\CMSConstants;
                     $dbData = \backend\modules\destinations\models\Area::find()->asArray()->all();
                     $dbData = ArrayHelper::merge([["-1"=>"NULL" , "name"=>"None"]], $dbData);
                     $data=ArrayHelper::map($dbData, 'id', 'name');
-                    echo $form->field($model, 'area', ['labelOptions'=>['label' => 'Area']])->dropDownList($data,['id'=>'name']);
+                    echo $form->field($model, 'area_id', ['labelOptions'=>['label' => 'Area']])->dropDownList($data,['id'=>'name']);
                 ?>
                 
                 <?= $form->field($model, 'poll_rate')->textInput(['maxlength' => 2, 'readonly'=>true]) ?>

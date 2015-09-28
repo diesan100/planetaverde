@@ -3,18 +3,20 @@
 namespace backend\modules\destinations\models;
 
 use Yii;
-
+use backend\modules\destinations\models\Area;
 /**
  * This is the model class for table "lodge".
  *
  * @property integer $id
- * @property integer $area
+ * @property integer $area_id
  * @property string $name
  * @property string $description
  * @property integer $state
  * @property string $notes
  * @property integer $img
  * @property string $poll_rate
+ * 
+ * @property Area $area
  */
 class Lodge extends \yii\db\ActiveRecord
 {
@@ -32,8 +34,8 @@ class Lodge extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['area', 'name'], 'required'],
-            [['area', 'state', 'img'], 'integer'],
+            [['area_id', 'name'], 'required'],
+            [['area_id', 'state', 'img'], 'integer'],
             [['poll_rate'], 'number'],
             [['name'], 'string', 'max' => 255],
             [['description'], 'string', 'max' => 1200],
@@ -48,7 +50,7 @@ class Lodge extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'area' => Yii::t('app', 'Area'),
+            'area_id' => Yii::t('app', 'Area'),
             'name' => Yii::t('app', 'Name'),
             'description' => Yii::t('app', 'Description'),
             'state' => Yii::t('app', 'State'),
@@ -56,5 +58,10 @@ class Lodge extends \yii\db\ActiveRecord
             'img' => Yii::t('app', 'Featured Image'),
             'poll_rate' => Yii::t('app', 'Poll Rate'),
         ];
+    }
+    
+    public function getArea()
+    {
+    	return $this->hasOne(Area::className(), ['id'=>'area_id']);
     }
 }

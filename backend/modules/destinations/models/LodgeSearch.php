@@ -18,7 +18,7 @@ class LodgeSearch extends Lodge
     public function rules()
     {
         return [
-            [['id', 'area', 'state', 'img'], 'integer'],
+            [['id', 'area_id', 'state', 'img'], 'integer'],
             [['name', 'description', 'notes'], 'safe'],
             [['poll_rate'], 'number'],
         ];
@@ -58,7 +58,7 @@ class LodgeSearch extends Lodge
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'area' => $this->area,
+            'area_id' => $this->area_id,
             'state' => $this->state,
             'img' => $this->img,
             'poll_rate' => $this->poll_rate,

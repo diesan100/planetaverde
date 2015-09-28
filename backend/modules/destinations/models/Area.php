@@ -17,8 +17,9 @@ use common\modules\cms\models\CmsPostContent;
  * @property string $coords_in_parent
  * @property integer $map_image
  * 
- * @property Area[] $subAreas
- * @property CmsPostContent[] $posts 
+ * @property Area[] 			$subAreas
+ * @property CmsPostContent[] 	$posts 
+ * @property Lodge[] 			$lodges
  */
 class Area extends \yii\db\ActiveRecord
 {
@@ -70,6 +71,11 @@ class Area extends \yii\db\ActiveRecord
     public function getPosts()
     {
     	return $this->hasMany(CmsPostContent::className(), ['area_id'=>'id'])->where('STATE=1')->orderBy('LAST_MODIFIED');
+    }
+    
+    public function getLodges()
+    {
+    	return $this->hasMany(Lodge::className(), ['area_id'=>'id']);
     }
     
     public function getParent()

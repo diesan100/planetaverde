@@ -159,6 +159,7 @@ class DestinationsController extends Controller
 				'area'=>$area,
 				'areaListing'=>$areaListing,
 				'news'=>$area->getNews(),
+				'lodges'=>$area->lodges,
 		]);
 	}
     

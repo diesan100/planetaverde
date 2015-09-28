@@ -28,6 +28,7 @@ foreach ($route as $r)
         <li><a href="javascript:showAreaInfo('info')">Information</a></li>
         <li><a href="javascript:showAreaInfo('news')"">News</a></li>
         <li><a href="javascript:showAreaInfo('gt')"">Group Trips</a></li>
+        <li><a href="javascript:showAreaInfo('lodge')"">Lodges</a></li>
         <li><a href="javascript:showAreaInfo('feedback')"">Feedback</a></li>
     </ul>
     <div class="spogglez"> 
@@ -63,6 +64,12 @@ foreach ($route as $r)
                 	<p><?=$t->CONTENT?></p>
                 <?php endforeach;?>
                 </div>
+                <div class="content content-lodge" style="display: none">
+                <?php foreach ($lodges as $t): ?>
+                	<h2><?=$t->name?></h2>
+                	<p><?=$t->description?></p>
+                <?php endforeach;?>
+                </div>
             </div>
         </div>
     </div>
@@ -76,5 +83,8 @@ function showAreaInfo(param)
 		$('.content.content-info').show();
 	else if(param == 'news')
 		$('.content.content-news').show();
+	else if(param == 'lodge')
+		$('.content.content-lodge').show();
+	fleXenv.updateScrollBars();
 }
 </script>
