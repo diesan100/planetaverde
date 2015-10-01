@@ -15,7 +15,7 @@ foreach ($route as $r)
 <div class="clearfix"></div>
 <div class="spoggle">
     <a class="softArrow" href="#">
-        <img src="<?= Yii::getAlias("@web") ?>/images/softArrowRight.png" alt="" />
+        <img src="<?= Yii::getAlias("@web") ?>/images/softArrowRight.png" alt=""/>
     </a>
     <p class="breadcrumb">
      <?php
@@ -32,9 +32,10 @@ foreach ($route as $r)
     </ul>
     <div class="spogglez"> 
         <div class="mapBox">
-            <?php echo CmsImages::getImageTag($lodge->img)?>
+            <?php echo CmsImages::getImageTag($lodge->img, ['style'=>'width: 400px'])?>
         </div>
         <div class="contentBox">
+        	<p class="heading1">Feedback</p>
             <div class='flexcroll'>
                 <div class="content content-lodge">
                 	<h1><?=$lodge->name?><span class="lost_star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></h1>

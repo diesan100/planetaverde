@@ -1,5 +1,6 @@
 <?php
 use yii\helpers\Url;
+use common\modules\media\models\CmsImages;
 
 $this->title = 'Destination';
 
@@ -54,24 +55,33 @@ foreach ($route as $r)
                     <?php endforeach; ?>
                 </ul>
                 <div class="content content-info">
-                	<h1>About <?=$area->name?></h1>
-                	<p><?php echo $area->description ?></p>
+                	<p class="heading1">About <?=$area->name?></p>
+                	<p class="smallHead1"><?php echo $area->description ?></p>
                 </div>
                 <div class="content content-news" style="display: none">
+                	<p class="heading1">News</p>
                 <?php foreach ($news as $t): ?>
-                	<h2><?=$t->TITLE?></h2>
-                	<p>
-                		<?=substr($t->CONTENT, 0, 100)?>
-                		<a href="<?=Url::to(['destinations/index', 'area_name'=>$area->name, 'ptype'=>'news', 'pid'=>$t->ID])?>">[Read more]</a>
-                	</p>
+                	<div class="noticBox">
+                		<?php echo CmsImages::getImageTag($t->FEATURED_IMG, ['class'=>'left mr10', 'style'=>'width: 60px'])?>
+                		<div class="left sifi">
+                			<p class="subHead1"><?=$t->TITLE?></a></p>
+            				<p class="smallHead1">
+            					<?=substr($t->CONTENT, 0, 100)?>
+                				<a href="<?=Url::to(['destinations/index', 'area_name'=>$area->name, 'ptype'=>'news', 'pid'=>$t->ID])?>">[Read more]</a>
+            				</p>
+                		</div>
+            		</div>
                 <?php endforeach;?>
                 </div>
                 <div class="content content-lodge" style="display: none">
+                	<p class="heading1">Lodges</p>
                 <?php foreach ($lodges as $t): ?>
-                	<h2>
-                		<a href="<?=Url::to(['destinations/index', 'area_name'=>$area->name, 'ptype'=>'lodge', 'pid'=>$t->id])?>"><?=$t->name?></a>
-                	</h2>
-                	<p><?=$t->description?></p>
+                	<div class="noticBox">
+                		<div class="left sifi">
+                			<p class="subHead1"><a href="<?=Url::to(['destinations/index', 'area_name'=>$area->name, 'ptype'=>'lodge', 'pid'=>$t->id])?>"><?=$t->name?></a></p>
+            				<p class="smallHead1"><?=$t->notes?></p>
+                		</div>
+            		</div>
                 <?php endforeach;?>
                 </div>
             </div>
