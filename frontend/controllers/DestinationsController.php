@@ -10,7 +10,7 @@ use common\modules\cms\models\CmsPostContent;
 use \yii\web\HttpException;
 use backend\modules\destinations\models\Area;
 use backend\modules\destinations\models\Lodge;
-
+use backend\modules\trips\models\GroupTrip;
 /**
  * Site controller
  */
@@ -157,7 +157,7 @@ class DestinationsController extends Controller
 		$this->view->params['parent_current_item'] = "Destinations";
 		$this->view->params['current_item'] = $area->name;
 
-		if(isset($_GET['pid'])) 
+		if(isset($_GET['pid']) && isset($_GET['ptype'])) 
 		{
 			$ptype = $_GET['ptype']; // page type
 			$pid = $_GET['pid'];
@@ -173,7 +173,15 @@ class DestinationsController extends Controller
 			}
 			else if($ptype == 'gt')
 			{
-				
+				$trip = GroupTrip::findOne([$pid]);
+				if($trip)
+				{
+					return $this->render("contentGroupTrip", [
+							'area'=>$area,
+							'trip'=>$trip,
+							'feedbacks'=>$trip->feedbacks,
+					]);
+				}
 			}
 			else if($ptype == 'lodge')
 			{
@@ -196,7 +204,7 @@ class DestinationsController extends Controller
 				'area'=>$area,
 				'areaListing'=>$areaListing,
 				'news'=>$area->getNews(),
-				'trips'=>null,
+				'trips'=>$area->groupTrips,
 				'lodges'=>$area->lodges,
 				'feedbacks'=>null,
 		]);

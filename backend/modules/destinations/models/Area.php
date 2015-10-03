@@ -4,6 +4,7 @@ namespace backend\modules\destinations\models;
 
 use Yii;
 use common\modules\cms\models\CmsPostContent;
+use backend\modules\trips\models\GroupTrip;
 
 /**
  * This is the model class for table "area".
@@ -20,6 +21,7 @@ use common\modules\cms\models\CmsPostContent;
  * @property Area[] 			$subAreas
  * @property CmsPostContent[] 	$posts 
  * @property Lodge[] 			$lodges
+ * @property GroupTrip[]		$groupTrips;
  */
 class Area extends \yii\db\ActiveRecord
 {
@@ -76,6 +78,11 @@ class Area extends \yii\db\ActiveRecord
     public function getLodges()
     {
     	return $this->hasMany(Lodge::className(), ['area_id'=>'id'])->where('STATE=1');
+    }
+    
+    public function getGroupTrips()
+    {
+    	return $this->hasMany(GroupTrip::className(), ['area_id'=>'id'])->where('STATE=1');
     }
     
     public function getParent()

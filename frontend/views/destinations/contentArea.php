@@ -29,7 +29,6 @@ foreach ($route as $r)
         <?php if(isset($news) && count($news)) echo '<li><a href="javascript:showAreaInfo(\'news\')"">News</a></li>'; ?>
         <?php if(isset($trips) && count($trips)) echo '<li><a href="javascript:showAreaInfo(\'gt\')"">Group Trips</a></li>'; ?>
         <?php if(isset($lodges) && count($lodges)) echo '<li><a href="javascript:showAreaInfo(\'lodge\')"">Lodges</a></li>'; ?>
-        <li><a href="javascript:showAreaInfo('feedback')"">Feedback</a></li>
     </ul>
     <div class="spogglez"> 
         <div class="mapBox">
@@ -54,10 +53,12 @@ foreach ($route as $r)
                         </li>
                     <?php endforeach; ?>
                 </ul>
+                
                 <div class="content content-info">
                 	<p class="heading1">About <?=$area->name?></p>
                 	<p class="smallHead1"><?php echo $area->description ?></p>
                 </div>
+                
                 <div class="content content-news" style="display: none">
                 	<p class="heading1">News</p>
                 <?php foreach ($news as $t): ?>
@@ -73,6 +74,7 @@ foreach ($route as $r)
             		</div>
                 <?php endforeach;?>
                 </div>
+                
                 <div class="content content-lodge" style="display: none">
                 	<p class="heading1">Lodges</p>
                 <?php foreach ($lodges as $t): ?>
@@ -80,6 +82,18 @@ foreach ($route as $r)
                 		<div class="left sifi">
                 			<p class="subHead1"><a href="<?=Url::to(['destinations/index', 'area_name'=>$area->name, 'ptype'=>'lodge', 'pid'=>$t->id])?>"><?=$t->name?></a></p>
             				<p class="smallHead1"><?=$t->notes?></p>
+                		</div>
+            		</div>
+                <?php endforeach;?>
+                </div>
+                
+                <div class="content content-trip" style="display: none">
+                	<p class="heading1">Group Trips</p>
+                <?php foreach ($trips as $t): ?>
+                	<div class="noticBox">
+                		<div class="left sifi">
+                			<p class="subHead1"><a href="<?=Url::to(['destinations/index', 'area_name'=>$area->name, 'ptype'=>'gt', 'pid'=>$t->id])?>"><?=$t->title?></a></p>
+            				<p class="smallHead1"><?=$t->subtitle?></p>
                 		</div>
             		</div>
                 <?php endforeach;?>
@@ -99,6 +113,8 @@ function showAreaInfo(param)
 		$('.content.content-news').show();
 	else if(param == 'lodge')
 		$('.content.content-lodge').show();
+	else if(param == 'gt')
+		$('.content.content-trip').show();
 	fleXenv.updateScrollBars();
 }
 </script>

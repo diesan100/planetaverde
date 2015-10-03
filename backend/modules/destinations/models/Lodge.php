@@ -3,8 +3,6 @@
 namespace backend\modules\destinations\models;
 
 use Yii;
-use backend\modules\destinations\models\Area;
-use backend\modules\destinations\models\Feedback;
 /**
  * This is the model class for table "lodge".
  *

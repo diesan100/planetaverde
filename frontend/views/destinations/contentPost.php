@@ -34,7 +34,7 @@ foreach ($route as $r)
         </div>
         <div class="contentBox">
             <div class='flexcroll'>
-                <h1><?=$post->TITLE?></h1>
+                <p class="subHead1"><?=$post->TITLE?></p>
                 <p>
                 	<?php echo $post->CONTENT?>
                 </p>
