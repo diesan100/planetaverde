@@ -41,7 +41,7 @@ foreach ($route as $r)
         <div class="contentBox">
             <div class='flexcroll'>
                 <div class="content content-summary">
-                	<p class="heading1"><?=$trip->title?><span class="lost_star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></p>
+                	<p class="heading1"><?=$trip->title?> <span class="lost_star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></p>
                 	<p class="smallHead1">
                 		<?php echo $trip->description?>
                 	</p>
@@ -62,10 +62,11 @@ foreach ($route as $r)
                 	<p class="heading1">Accommodations</p>
                 	<?php foreach ($trip->tripItems as $t):?>
                 		<div class="noticBox">
-                			<img class="left mr10" src="images/noimg.jpg" alt="" />
+                			<?php echo CmsImages::getImageTag($t->lodge->img, ['class'=>'left mr10', 'style'=>'height: 50px'])?>
 			                <div class="left sifi">
 			                	<p class="subHead1">
-			                		<?=$t->lodge->name?><span class="star_rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+			                		<span><?=$t->lodge->name?></span>
+			                		<span class="star_rating"><?=$t->lodge->name?><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
 			                	</p>
 			                    <div class="clear"></div>
 			            		<p class="smallHeadz"><?=$t->lodge->notes?></p>
@@ -80,7 +81,7 @@ foreach ($route as $r)
 		                <div class="left sifi">
 		                	<span class="star_rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
 		                    <div class="clear"></div>
-		            		<p class="smallHeadz">The views of the highest mountain in Malaysia is spectacular</p>
+		            		<p class="smallHeadz">$f->comment</p>
 		                </div>
 		            </div>
                 <?php endforeach;?>
