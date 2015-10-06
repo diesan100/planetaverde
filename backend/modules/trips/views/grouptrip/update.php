@@ -54,8 +54,8 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
                				<td><?=$item->lodge->name?></td>
                				<td><?=$item->nights?></td>
                				<td>
-               					<button type="button" class="btn btn-warning" onclick="editItem(<?=$item->id?>)"><i class="fa fa-pencil"></i> Edit</button>
-               					<button type="button" class="btn btn-danger" onclick="deleteItem(<?=$item->id?>)"><i class="fa fa-remove"></i> Remove</button>
+               					<button type="button" class="btn btn-warning btn-edit" data-item-id="<?=$item->id?>"><i class="fa fa-pencil"></i> Edit</button>
+               					<button type="button" class="btn btn-danger btn-del" data-item-id="<?=$item->id?>"><i class="fa fa-remove"></i> Remove</button>
                				</td>
                			</tr>
                		<?php endforeach; ?>
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
                					])?>
                				</td>
                				<td>
-               					<input type="number" id="accomo-nights" name="GroupTripItem[nights]" class="form-control">
+               					<input type="number" id="accom-nights" name="GroupTripItem[nights]" class="form-control">
                				</td>
                				<td>
                					<button type="button" class="btn btn-success" onclick="addAccommoda()"><i class="fa fa-plus"></i> Add</button>
@@ -92,16 +92,54 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
 	</div>
 </div>
 
+<?php 
+$this->registerJs(
+"$(function() {
+	$('.accomo-table tr button.btn-del').click(function() {
+		if(!confirm('Are you sure to delete this item?'))
+			return;
+
+		var me = $(this);
+		$.ajax({
+			type: 'post',
+			url: '". Url::to(['grouptrip/delete_item']). "'+'&id='+me.data('item-id'),
+			success: function(data) {
+				if(data == 'success')
+				{
+					me.parents('tr').remove();
+				}
+				else
+					console.log(data);
+			},
+			error: function(data) {
+				console.log(data);
+			}
+		});
+	});
+});");
+?>
 <script>
 function addAccommoda()
 {
 	$.ajax({
 		type: 'post',
-		url: "<?=Url::to(['grouptrip/additem'])?>",
+		url: "<?=Url::to(['grouptrip/add_item'])?>",
 		data: $('#accommoda-form').serialize(),
 		success: function(data) {
 			if(data == 'success')
-				$('#accommoda-form').reset();
+			{
+				$tr = $('<tr>');
+				$tr.append('<td></td>');
+				$tr.append('<td>' + $('#accom-lodge option:selected').text() + '</td>');
+				$tr.append('<td>' + $('#accom-nights').val() + '</td>');
+				$tr.append('<td>' +
+						'<button type="button" class="btn btn-warning btn-edit" data-item-id="' + $('#accom-lodge').val() + '"><i class="fa fa-pencil"></i> Edit</button> ' +
+               			'<button type="button" class="btn btn-danger btn-del" data-item-id="' + $('#accom-lodge').val() + '"><i class="fa fa-remove"></i> Remove</button>'
+						+ '</td>');
+				$('.accomo-table tbody').append($tr);
+				
+				$('#accom-nights').val('');
+			}
 			else
 				console.log(data);
 		},

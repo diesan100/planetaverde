@@ -36,6 +36,7 @@ if(!$model->isNewRecord) {
             <?= $form->field($model, 'TITLE')->textInput(['maxlength' => 255]) ?>
             <?php
             	$dataAreas = ArrayHelper::map(Area::find()->asArray()->all(), 'id', 'name');
+            	array_unshift($dataAreas, 'None');
             	echo $form->field($model, 'area_id')->dropDownList($dataAreas);
             ?>
             <?= $form->field($model, 'PERMALINK')->textInput(['readonly' => true], ['maxlength' => 255]) ?>

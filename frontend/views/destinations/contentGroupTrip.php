@@ -65,8 +65,8 @@ foreach ($route as $r)
                 			<?php echo CmsImages::getImageTag($t->lodge->img, ['class'=>'left mr10', 'style'=>'height: 50px'])?>
 			                <div class="left sifi">
 			                	<p class="subHead1">
-			                		<span><?=$t->lodge->name?></span>
-			                		<span class="star_rating"><?=$t->lodge->name?><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+			                		<a href="<?=Url::to(['destinations/index', 'area_name'=>$t->trip->area->name, 'ptype'=>'lodge', 'pid'=>$t->lodge->id])?>"><?=$t->lodge->name?></a>
+			                		<span class="lost_star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
 			                	</p>
 			                    <div class="clear"></div>
 			            		<p class="smallHeadz"><?=$t->lodge->notes?></p>

@@ -42,11 +42,14 @@ foreach ($route as $r)
         </div>
         <div class="contentBox">
             <div class='flexcroll'>
-                <h1>Destinos</h1>
+                <h1>Destinations</h1>
                 <ul>
                     <?php foreach ($areaListing as $key => $model): ?>
                         <li>
-                            <h2>Destino <?php echo $key + 1; ?> | <?php echo $model->name; ?></h2>
+                            <h2>
+                            	Destination <?php echo $key + 1; ?> | 
+                            	<a href="<?=$model->url?>"><?=$model->name?></a>
+                            </h2>
                             <?php if ($key + 1 != count($areaListing)): ?>
                                 <hr>
                             <?php endif; ?>

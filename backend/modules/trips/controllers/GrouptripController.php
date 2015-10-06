@@ -129,7 +129,7 @@ class GrouptripController extends Controller
     
     /* GroupTrip Item Control */
     
-    public function actionAdditem()
+    public function actionAdd_item()
     {
     	$item = new GroupTripItem;
     	
@@ -138,5 +138,14 @@ class GrouptripController extends Controller
     	} else {
     		echo json_encode($item->getErrors());
     	}
+    }
+    
+    public function actionDelete_item($id)
+    {
+    	$item = GroupTripItem::findOne($id);
+    	if($item && $item->delete())
+    		echo 'success';
+    	else
+    		echo 'failure';
     }
 }
