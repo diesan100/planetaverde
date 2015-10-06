@@ -156,6 +156,17 @@ class DestinationsController extends Controller
 		
 		$this->view->params['parent_current_item'] = "Destinations";
 		$this->view->params['current_item'] = $area->name;
+		
+		if(!isset($area_name)) // world map, index of destinations
+		{
+			$areaListing = Area::findAll(["featured"=>1]);
+				
+			return $this->render("contentHome", [
+					'area'=>$area,
+					'areaListing'=>$areaListing,
+					'news'=>$area->getNews(),
+			]);
+		}
 
 		if(isset($_GET['pid']) && isset($_GET['ptype'])) 
 		{
@@ -191,18 +202,16 @@ class DestinationsController extends Controller
 					return $this->render("contentLodge", [
 						'area'=>$area,
 						'lodge'=>$lodge,
+						'news'=>$area->getNews(),
 						'feedbacks'=>$lodge->feedbacks,
 					]);
 				}
 			}
 		}
 		
-		// render area page
-		$areaListing = Area::findAll(["parent"=>$area->id,"featured"=>1]);
 			
 		return $this->render("contentArea", [
 				'area'=>$area,
-				'areaListing'=>$areaListing,
 				'news'=>$area->getNews(),
 				'trips'=>$area->groupTrips,
 				'lodges'=>$area->lodges,

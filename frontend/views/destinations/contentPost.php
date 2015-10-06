@@ -8,7 +8,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
 $route = $area->getAreaRoute(false);
 foreach ($route as $r)
 {
-	array_push($this->params['breadcrumbs'], ['label'=>$r['name'], 'url'=> $r['name']]);
+	array_push($this->params['breadcrumbs'], ['label'=>$r['name'], 'url'=> yii::$app->request->baseUrl. '/Destinations/'. $r['name']]);
 }
 ?>
 
@@ -24,10 +24,12 @@ foreach ($route as $r)
         ]);
     ?>
     </p>
+    <?php if(false) { ?>
      <ul class="sub_navigation">
         <li><a href="<?=$area->getUrl()?>">Information</a></li>
         <li class="activa"><a href="<?=$area->getUrl()?>">News</a></li>
     </ul>
+    <?php } ?>
     <div class="spogglez"> 
         <div class="mapBox">
             <?php echo CmsImages::getImageTag($post->FEATURED_IMG)?>

@@ -87,6 +87,14 @@ return [
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
+//     	'assetManager' => [
+//     		'bundles' => [
+//     			'yii\web\JqueryAsset' => [
+//     				'sourcePath' => null,
+//     				'js' => '',
+//     			]	
+//     		],
+//     	],
         'log' => [
             'traceLevel' => YII_DEBUG ? 3 : 0,
             'targets' => [

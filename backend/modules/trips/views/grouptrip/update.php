@@ -53,8 +53,7 @@ $this->params['breadcrumbs'][] = Yii::t('app', 'Update');
                				<td><input type="hidden" value="<?=$item->id?>"></td>
                				<td><?=$item->lodge->name?></td>
                				<td><?=$item->nights?></td>
-               				<td>
-               					<button type="button" class="btn btn-warning btn-edit" data-item-id="<?=$item->id?>"><i class="fa fa-pencil"></i> Edit</button>
+               				<td>               					
                					<button type="button" class="btn btn-danger btn-del" data-item-id="<?=$item->id?>"><i class="fa fa-remove"></i> Remove</button>
                				</td>
                			</tr>
@@ -133,7 +132,6 @@ function addAccommoda()
 				$tr.append('<td>' + $('#accom-lodge option:selected').text() + '</td>');
 				$tr.append('<td>' + $('#accom-nights').val() + '</td>');
 				$tr.append('<td>' +
-						'<button type="button" class="btn btn-warning btn-edit" data-item-id="' + $('#accom-lodge').val() + '"><i class="fa fa-pencil"></i> Edit</button> ' +
                			'<button type="button" class="btn btn-danger btn-del" data-item-id="' + $('#accom-lodge').val() + '"><i class="fa fa-remove"></i> Remove</button>'
 						+ '</td>');
 				$('.accomo-table tbody').append($tr);

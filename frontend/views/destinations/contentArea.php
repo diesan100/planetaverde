@@ -2,7 +2,7 @@
 use yii\helpers\Url;
 use common\modules\media\models\CmsImages;
 
-$this->title = 'Destination';
+$this->title = $area->name;
 
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url' => ['index']];
 $route = $area->getAreaRoute(false);
@@ -25,7 +25,9 @@ foreach ($route as $r)
     ?>
     </p>
      <ul class="sub_navigation">
+     	<?php if(!isset($news) && !isset($trips) && !isset($lodges)): ?>
         <li class="activa"><a href="javascript:showAreaInfo('info')">Information</a></li>
+        <?php endif;?>
         <?php if(isset($news) && count($news)) echo '<li><a href="javascript:showAreaInfo(\'news\')"">News</a></li>'; ?>
         <?php if(isset($trips) && count($trips)) echo '<li><a href="javascript:showAreaInfo(\'gt\')"">Group Trips</a></li>'; ?>
         <?php if(isset($lodges) && count($lodges)) echo '<li><a href="javascript:showAreaInfo(\'lodge\')"">Lodges</a></li>'; ?>
@@ -42,21 +44,6 @@ foreach ($route as $r)
         </div>
         <div class="contentBox">
             <div class='flexcroll'>
-                <h1>Destinations</h1>
-                <ul>
-                    <?php foreach ($areaListing as $key => $model): ?>
-                        <li>
-                            <h2>
-                            	Destination <?php echo $key + 1; ?> | 
-                            	<a href="<?=$model->url?>"><?=$model->name?></a>
-                            </h2>
-                            <?php if ($key + 1 != count($areaListing)): ?>
-                                <hr>
-                            <?php endif; ?>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-                
                 <div class="content content-info">
                 	<p class="heading1">About <?=$area->name?></p>
                 	<p class="smallHead1"><?php echo $area->description ?></p>
