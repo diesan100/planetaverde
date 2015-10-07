@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
                             		<span class="subHead1"><?=$model->name?></span>
                             		<?php
                             			$route = $model->getAreaRoute(false);
-                            			if(count($route) > 1) echo ' <span class="smallHead1">| '. $route[0]['name']. '</span>';
+                            			if(count($route) > 1) echo '<span class="smallHead1"> | '. $route[0]['name']. '</span>';
                             		?>
                             	</a>
                             <?php if ($key + 1 != count($areaListing)): ?>
