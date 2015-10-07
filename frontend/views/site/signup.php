@@ -20,11 +20,11 @@ if (!isset($login_model)) {
 ?>
 <section class="eRegistration">
     <div class="boxo">
-        <?php $form = ActiveForm::begin(['id' => 'form-login']); ?>
+        <?php $form = ActiveForm::begin(['id' => 'form-login', 'action'=>  yii\helpers\Url::to(["site/login"])]); ?>
         <p class="bigtitle"><?= Yii::t('frontend', 'Login') ?></p>
-        <input type="text" value="" placeholder="_mail" onfocus="this.placeholder = ''" onblur="this.placeholder = '_mail'"  />
+        <input type="text" id="loginform-username"  name="LoginForm[username]" value="" placeholder="_mail" onfocus="this.placeholder = ''" onblur="this.placeholder = '_mail'"  />
         <div class="clear"></div>
-        <input type="text" value="" placeholder="_contrasena" onfocus="this.placeholder = ''" onblur="this.placeholder = '_password'" />
+        <input type="password" id="loginform-password"  name="LoginForm[password]" value="" placeholder="_contrasena" onfocus="this.placeholder = ''" onblur="this.placeholder = '_password'" />
         <button class="smlsbtn">Login</button>
         <div class="clear"></div>
         <?php ActiveForm::end(); ?>
