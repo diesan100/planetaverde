@@ -42,8 +42,15 @@ foreach ($route as $r)
 
             <!--</a>-->
         </div>
-        <div class="contentBox">
-            <div class='flexcroll'>
+        
+        <div class="map-handler">
+            <div class="show-control" style="display:none;">show map</div>
+            <div class="hide-control">hide map</div>
+            
+        </div>
+        
+        <div class="contentBox flexcroll">
+            
                 <div class="content content-info">
                 	<p class="heading1">About <?=$area->name?></p>
                 	<p class="smallHead1"><?php echo $area->description ?></p>
@@ -88,7 +95,7 @@ foreach ($route as $r)
             		</div>
                 <?php endforeach;?>
                 </div>
-            </div>
+            
         </div>
     </div>
 </div>
