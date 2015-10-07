@@ -64,7 +64,7 @@ class MappedImageMapWidget extends \yii\bootstrap\Widget {
     
     private function getJScript() {
         return "$(function() {
-                $('.mapthis').maphilight({fade: false});
+                $('.mapthis').maphilight({fade: true});
             });";
     }
         
