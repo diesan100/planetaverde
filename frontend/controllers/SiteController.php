@@ -210,8 +210,14 @@ class SiteController extends Controller {
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect(\yii\helpers\Url::to(["/user/idnex"]));
+            return $this->redirect(\yii\helpers\Url::to(["/user/index"]));
         } else {
+            var_dump($model);
+            return $this->render('signup', [
+                            'model' => $model,
+                            'title' => Yii::t('app', 'Login'),
+                ]);
+            /*
             if (isset($returnSignup) && $returnSignup) {
                 return $this->render('signup', [
                             'signup_model' => new SignupForm(),
@@ -221,7 +227,7 @@ class SiteController extends Controller {
                 return $this->render('login', [
                             'model' => $model,
                 ]);
-            }
+            }*/
         }
     }
 
