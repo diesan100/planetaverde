@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
                 <ul>
                     <?php foreach ($areaListing as $key => $model): ?>
                         <li>
-                            <h2 style="margin-left: 30px">
+                            <h2>
                             	<a href="<?=$model->url?>">
                             		<?=$model->name?>
                             		<?php
