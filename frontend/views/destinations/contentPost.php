@@ -17,13 +17,13 @@ foreach ($route as $r)
     <a class="softArrow" href="#">
         <img src="<?= Yii::getAlias("@web") ?>/images/softArrowRight.png" alt="" />
     </a>
-    <p class="breadcrumb">
+    
      <?php
        echo yii\widgets\Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]);
     ?>
-    </p>
+    
     <?php if(false) { ?>
      <ul class="sub_navigation">
         <li><a href="<?=$area->getUrl()?>">Information</a></li>
@@ -34,13 +34,17 @@ foreach ($route as $r)
         <div class="mapBox">
             <?php echo CmsImages::getImageTag($post->FEATURED_IMG)?>
         </div>
-        <div class="contentBox">
-            <div class='flexcroll'>
+        <div class="map-handler">
+            <div class="show-control" style="display:none;">show image</div>
+            <div class="hide-control">hide image</div>            
+        </div>
+        <div class="contentBox flexcroll">
+            
                 <p class="subHead1"><?=$post->TITLE?></p>
                 <p>
                 	<?php echo $post->CONTENT?>
                 </p>
-            </div>
+            
         </div>
     </div>
 </div>

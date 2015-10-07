@@ -7,13 +7,13 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
     <a class="softArrow" href="#">
         <img src="<?=Yii::getAlias("@web")?>/images/softArrowRight.png" alt="" />
     </a>
-    <p class="breadcrumb">
+    
      <?php
        echo yii\widgets\Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]);
     ?>
-    </p>
+    
     <div class="spogglez"> 
         <div class="mapBox">
             <!--<a href="#">-->
@@ -24,8 +24,14 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
 
             <!--</a>-->
         </div>
-        <div class="contentBox">
-            <div class='flexcroll'>
+        <div class="map-handler">
+            <div class="show-control" style="display:none;">show map</div>
+            <div class="hide-control">hide map</div>
+            
+        </div>
+        <div class="contentBox flexcroll">
+            &nbsp;
+            
                 <h1>Destinations</h1>
                 <ul>
                     <?php foreach ($areaListing as $key => $model): ?>

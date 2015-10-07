@@ -17,13 +17,13 @@ foreach ($route as $r)
     <a class="softArrow" href="#">
         <img src="<?= Yii::getAlias("@web") ?>/images/softArrowRight.png" alt=""/>
     </a>
-    <p class="breadcrumb">
+    
      <?php
        echo yii\widgets\Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]);
     ?>
-    </p>
+   
      <ul class="sub_navigation">
         <li class="activa"><a href="javascript:showAreaInfo('lodge');">Information</a></li>
         <li><a href="javascript:showAreaInfo('news');">News</a></li>
@@ -34,8 +34,13 @@ foreach ($route as $r)
         <div class="mapBox">
             <?php echo CmsImages::getImageTag($lodge->img, ['style'=>'width: 400px'])?>
         </div>
-        <div class="contentBox">
-            <div class='flexcroll'>
+        <div class="map-handler">
+            <div class="show-control" style="display:none;">show image</div>
+            <div class="hide-control">hide image</div>
+            
+        </div>
+        <div class="contentBox flexcroll">
+            
                 <div class="content content-lodge">
                 	<h1><?=$lodge->name?><span class="lost_star"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span></h1>
                 	<p>
@@ -79,7 +84,7 @@ foreach ($route as $r)
 		            		<textarea placeholder="Write a feedback" onfocus="this.placeholder = ''" onblur="this.placeholder = '_danos tu feedback'"></textarea>
 		                </div>
 		            </div>
-                </div>
+                
             </div>
         </div>
     </div>
