@@ -1,0 +1,72 @@
+<?php
+
+namespace frontend\modules\customTrip\controllers;
+
+use yii\web\Controller;
+use yii\filters\VerbFilter;
+
+/**
+ * Site controller
+ */
+class WishlistController extends Controller {
+
+    /**
+     * @inheritdoc
+     */
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error', 'index'],
+                        'allow' => true,
+                    ],
+                    [
+                        'actions' => ['edit-profile'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function actions() {
+        return [
+            'error' => [
+                'class' => 'yii\web\ErrorAction',
+            ],
+            'captcha' => [
+                'class' => 'yii\captcha\CaptchaAction',
+                'fixedVerifyCode' => YII_ENV_TEST ? 'testme' : null,
+            ],
+        ];
+    }
+
+    
+
+    /*
+      public function actionAbout()
+      {
+      return $this->render('about');
+      }
+     */
+
+    public function actionIndex() {
+        $this->view->params['parent_current_item'] = null;
+        $this->view->params['current_item'] = null;
+        return $this->render('index');
+    }
+
+}
