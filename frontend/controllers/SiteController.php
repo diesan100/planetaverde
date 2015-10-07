@@ -16,7 +16,6 @@ use common\modules\cms\models\CmsPage;
 use common\modules\cms\constants\CMSConstants;
 use common\modules\cms\models\CmsPostContent;
 use \yii\web\HttpException;
-use \usersbackend\modules\users\models\Membership;
 use common\modules\cms\models\CmsMenuItem;
 
 /**
@@ -210,24 +209,14 @@ class SiteController extends Controller {
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect(\yii\helpers\Url::to(["/user/index"]));
+            return $this->redirect(\yii\helpers\Url::to(["/user-profile/index"]));
         } else {
-            var_dump($model);
+            //var_dump($model);
             return $this->render('signup', [
                             'model' => $model,
                             'title' => Yii::t('app', 'Login'),
                 ]);
-            /*
-            if (isset($returnSignup) && $returnSignup) {
-                return $this->render('signup', [
-                            'signup_model' => new SignupForm(),
-                            'model' => $model
-                ]);
-            } else {
-                return $this->render('login', [
-                            'model' => $model,
-                ]);
-            }*/
+           
         }
     }
 
