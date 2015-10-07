@@ -13,6 +13,14 @@ return [
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'defaultRoute' => 'site/page',
+    'modules' => [
+        'user' => [
+            'class' => 'frontend\modules\user\UserModule',
+        ],
+        'customTrip' => [
+            'class' => 'frontend\modules\customTrip\CustomTripModule',
+        ],
+    ],
     'components' => [
         'request' => [
             'enableCsrfValidation'=>false,
@@ -27,19 +35,29 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => false,
             'rules' => [
-               'site' => 'site/page',
-               'signup' => 'site/signup',
-               'logout' => 'site/logout',
-               'login' => 'site/login',
-                'user/<action>'=>'user/<action>',
-               'Destinations' => 'destinations/index',
- //              'Destinations/<areaName>' => 'destinations/index/<areaName>',
-               'Destinations/<area_name:[\w\/.-]+( \w+)*$>' => 'destinations/index',
-               
-               '<itemGrandParent>/<itemParent>/<itemTitle>' => 'site/page',
-               '<itemParent>/<itemTitle>' => 'site/page',
-               '<itemTitle>' => 'site/page',
-               //'site/page' => 'site/page',
+                'site' => 'site/page',
+                'signup' => 'site/signup',
+                'logout' => 'site/logout',
+                'login' => 'site/login',
+                
+                'user-profile/<action>'=>'/user/user-profile/<action>',
+                'user-budgets/<action>'=>'/user/user-budgets/<action>',
+                'user-planned-trips/<action>'=>'/user/user-planned-trips/<action>',
+                'user-finished-trips/<action>'=>'/user/user-finished-trips/<action>',
+                'user-messages/<action>'=>'/user/user-messages/<action>',
+                'user-planned-trips/<action>'=>'/user/user-planned-trips/<action>',
+                'user-friends/<action>'=>'/user/user-friends/<action>',
+                'user-my-pictures/<action>'=>'/user/user-my-pictures/<action>',
+                
+                'Wishlist'=>'customTrip/wishlist/index',
+                'configurator'=>'customTrip/custom-trip/index',
+                'configurator/addExtension'=>'customTrip/custom-trip/add-extension',
+                
+                'Destinations' => 'destinations/index',
+                'Destinations/<area_name:[\w\/.-]+( \w+)*$>' => 'destinations/index',
+                '<itemGrandParent>/<itemParent>/<itemTitle>' => 'site/page',
+                '<itemParent>/<itemTitle>' => 'site/page',
+                '<itemTitle>' => 'site/page',
             ],
         ],
 
@@ -73,6 +91,15 @@ return [
                     'sourceLanguage' => 'en',
                     'fileMap' => [
                         'app' => 'app.php',
+                        //'app/error' => 'error.php',
+                    ],
+                ], 
+                'trips*' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    //'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en',
+                    'fileMap' => [
+                        'trips' => 'trips.php',
                         //'app/error' => 'error.php',
                     ],
                 ], 
