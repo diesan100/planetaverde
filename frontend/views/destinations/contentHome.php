@@ -30,15 +30,13 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
                 <ul>
                     <?php foreach ($areaListing as $key => $model): ?>
                         <li>
-                            <h2>
                             	<a href="<?=$model->url?>">
-                            		<?=$model->name?>
+                            		<span class="subHead1"><?=$model->name?></span>
                             		<?php
                             			$route = $model->getAreaRoute(false);
-                            			if(count($route) > 1) echo ' | '. $route[0]['name'];
+                            			if(count($route) > 1) echo ' <span class="smallHead1">| '. $route[0]['name']. '</span>';
                             		?>
                             	</a>
-                            </h2>
                             <?php if ($key + 1 != count($areaListing)): ?>
                                 <hr/>
                             <?php endif; ?>
