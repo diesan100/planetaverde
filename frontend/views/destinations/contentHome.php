@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Destination'), 'url'
                             		?>
                             	</a>
                             <?php if ($key + 1 != count($areaListing)): ?>
-                                <hr/>
+                                <hr style="margin-top: 10px"/>
                             <?php endif; ?>
                         </li>
                     <?php endforeach; ?>
