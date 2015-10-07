@@ -56,7 +56,7 @@ h4, .heading4 /*, .contentBox p*/ { font-size:16px; color:#333;}
 .breadcrumb a,.breadcrumb a:hover { font-family:pantonbold; color:#fff; text-decoration:underline;}
 
 .login { position:absolute; right:0; top:15px; z-index:9; background:#e85655;}
-.login li { display:inline;} .login li:last-child a { border:none;}
+.login li { display:inline;} .login li:last-child a { border:none;} .login li a.goto-user-link {color:white; padding-top: 15px; font-size: 17px; float: right;}
 .login li a { padding: 10.5px 10.5px; display:inline-table; border-right:1px solid #fff;}
 .login input[type="text"] { color:#8f8f8f; font-family:pantonthin; border: 0 none; line-height: 25px; height:25px; margin-right: 10px; outline: 0 none; padding: 0 8px 0; width: 98px; float:left;}
 .oddz { padding: 10.5px !important;}

@@ -3,6 +3,7 @@ use frontend\assets\AppAsset;
 use yii\helpers\Html;
 use common\widgets\MenuWidget;
 use common\widgets\SettingsParamWidget;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
@@ -54,16 +55,18 @@ AppAsset::register($this);
     </ul>
 
     <ul class="login">
-        <li><a href="#"><img src="<?=Yii::getAlias("@web")?>/images/carro.png" alt="" /></a></li>
+        <li><a href="#"><img src="<?=Yii::getAlias("@web")?>/images/wishlist.png" alt="" /></a></li>
         <li><a href="#" class="oddz"><input type="text" placeholder="search" onfocus="this.placeholder = ''" onblur="this.placeholder = 'search'" /><img src="<?=Yii::getAlias("@web")?>/images/search.png" alt="" /></a></li>
         <li><a target="blank" href="<?= backend\modules\settings\models\Settings::getParamValue("front-page", "facebook-link");?> "><img src="<?=Yii::getAlias("@web")?>/images/facebook.png" alt="" /></a></li>
         
-        <li>
+        <li class="">
             <?php 
                 if(Yii::$app->user->isGuest) { ?>
                     <a href="<?= yii\helpers\Url::to(["site/signup"]); ?>"><img src="<?=Yii::getAlias("@web")?>/images/login.png" alt="" /></a>
                 <?php } else { ?>
-                    <a href="<?= yii\helpers\Url::to(["site/logout"]); ?>" data-method="post">Log out</a>
+                    <a  style="float:right" href="<?= Url::to(["site/logout"]); ?>" data-method="post"><img src="<?=Yii::getAlias("@web")?>/images/logout.png" alt="logout" /></a>
+                    <a href="<?= Url::to(["/user/index"]); ?>" class="goto-user-link"><?=Yii::$app->user->identity->email;?></a>
+                    <a  style="float:right"><img src="<?=Yii::getAlias("@web")?>/images/user.png" alt="" /></a>
                 <?php } ?>
                         
         </li>
