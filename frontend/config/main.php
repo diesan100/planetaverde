@@ -31,6 +31,7 @@ return [
                'signup' => 'site/signup',
                'logout' => 'site/logout',
                'login' => 'site/login',
+                'user/<action>'=>'user/<action>',
                'Destinations' => 'destinations/index',
  //              'Destinations/<areaName>' => 'destinations/index/<areaName>',
                'Destinations/<area_name:[\w\/.-]+( \w+)*$>' => 'destinations/index',
