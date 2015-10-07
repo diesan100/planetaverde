@@ -11,6 +11,24 @@ slideLeftBtn.addEventListener('click', function (e) {
 });
 $(".softArrow").click(function () {
     $(".spoggle").toggleClass("highlight");
+    //fleXenv.updateScrollBars();
+});
+$(".map-handler").click(function () {
+        $(".mapBox").slideToggle(function(){
+        if($(".mapBox").is(":visible")) {
+            $(".show-control").hide();
+            $(".hide-control").show();
+            console.log("yes");
+            $(".contentBox").height("33vh");
+        } else {
+            $(".show-control").show();
+            $(".hide-control").hide();            
+            console.log("no");
+            $(".contentBox").height("95vh");
+        }
+        fleXenv.updateScrollBars();
+    });
+    
 });
 $(document).ready(function ($) {
 // background changer
